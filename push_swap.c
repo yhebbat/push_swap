@@ -1,15 +1,22 @@
 #include "prj.h"
+#include "get_next_line.h"
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+
+void		ft_exit()
+{
+	printf("Error\n");
+	exit(0);
+}
 
 void ft_remplir(t_list *head,char *str)
 {
 	t_stack	*a;
 
 	a = malloc(sizeof(t_stack));
-	/*if (!a)
-		ft_exit();*/
+	if (!a)
+		ft_exit();
 	if (head->header == NULL)
 	{
 		a->value = atoi(str);
@@ -24,11 +31,6 @@ void ft_remplir(t_list *head,char *str)
 	}
 }
 
-void		ft_exit()
-{
-	printf("Error\n");
-	exit(0);
-}
 
 int			is_digit(char *str)
 {
@@ -43,7 +45,7 @@ int			is_digit(char *str)
 	return (0);
 }
 
-int			check_duplicate( t_list *head, char *str)
+int			check_duplicate(t_list *head, char *str)
 {
 	t_stack *a;
 
@@ -77,6 +79,46 @@ int	check_value(t_list *head, char *str)
 	return (0);
 }
 
+void	ft_command(char *line)
+{
+	printf("|%s|\n",line);
+	/*if (strcmp(line, "sa") == 0)
+		swap(&a);
+	else if (strcmp(line, "sb") == 0)
+		swap(&b);
+	else if (strcmp(line, "ss") == 0)
+		swap(&a);
+	else if (strcmp(line, "pa") == 0)
+		swap(&a);
+	else if (strcmp(line, "pb") == 0)
+		swap(&a);
+	else if (strcmp(line, "ra") == 0)
+		swap(&a);
+	else if (strcmp(line, "rb") == 0)
+		swap(&a);
+	else if (strcmp(line, "rr") == 0)
+		swap(&a);
+	else if (strcmp(line, "rra") == 0)
+		swap(&a);
+	else if (strcmp(line, "rrb") == 0)
+		swap(&a);
+	else if (strcmp(line, "rrr") == 0)
+		swap(&a);*/
+}
+
+void	ft_get()
+{
+	char *line;
+
+	while (get_next_line(0, &line))
+	{
+		if (strcmp(line, "") == 0)
+			break ;
+		ft_command(line);
+		free(line);
+	}
+}
+
 int main(int ac, char **av)
 {
 	t_list *header;
@@ -96,7 +138,8 @@ int main(int ac, char **av)
 			else
 				ft_remplir(header, av[i]);
 			i++;
-		} 
+		}
+		ft_get(header);
 		a = header->header;
 		while (a != NULL)
 		{
@@ -111,7 +154,6 @@ int main(int ac, char **av)
 void	ft_lstadd_first(t_stack **lst, int val)
 {
 	t_stack	*help;
-
 	help = (t_stack *)malloc(sizeof(t_stack));
 	if(help != NULL)
 	{
@@ -120,11 +162,9 @@ void	ft_lstadd_first(t_stack **lst, int val)
 		*lst = help;
 	}
 }
-
 void	ft_lstdel_first(t_stack **lst)
 {
 	t_stack *tmp;
-
 	if (*lst != NULL && lst != NULL)
 	{
 		tmp = *lst;
@@ -134,12 +174,10 @@ void	ft_lstdel_first(t_stack **lst)
 		free(tmp);
 	}
 }
-
 void	add_last(t_stack **lst, int val)
 {
 	t_stack *new;
 	t_stack *help;
-
 	new = malloc(sizeof(t_stack));
 	if (new != NULL)
 	{
@@ -156,12 +194,10 @@ void	add_last(t_stack **lst, int val)
 		}
 	}
 }
-
 void		del_last(t_stack **p)
 {
 	t_stack *tmp;
 	t_stack *help;
-
 	if (p != NULL && *p != NULL)
 	{
 		if ((*p)->suivant == NULL)
@@ -179,7 +215,6 @@ void		del_last(t_stack **p)
 		free(tmp);
 	}
 }
-
 // t_liste		*initialisation()
 // {
 // 	t_stack	*p;
@@ -194,7 +229,6 @@ void		del_last(t_stack **p)
 // 	f->first = p;
 // 	return (f);
 // }
-
 t_stack		*ft_newstack(int ac, char **av)
 {
 	t_stack *p;
@@ -209,7 +243,6 @@ t_stack		*ft_newstack(int ac, char **av)
 	}
 	return (p);
 }
-
 int			check_overflow(char *str)
 {
 	long long r;
@@ -219,7 +252,6 @@ int			check_overflow(char *str)
 		return (0);
 	return (1);
 }
-
 int			is_digit(char *str)
 {
 	if (*(str + 1) != '\0' && (*str == '+' || *str == '-'))
@@ -232,18 +264,15 @@ int			is_digit(char *str)
 	}
 	return (1);
 }
-
 int			ft_checkvalue(t_stack *p, char *av)
 {	
 	if (is_digit(av) || check_overflow(av) /*|| check_duplicate(p, atoi(av)))
 		return (0);
 	return (1);
 }
-
 void		swap(t_stack **lst)
 {
 	int		tmp;
-
 	if (lst != NULL && *lst != NULL)
 	{
 		tmp = (*lst)->value;
@@ -252,7 +281,6 @@ void		swap(t_stack **lst)
 	}
 	free(tmp);
 }
-
 void		command(t_stack **a, t_stack **b, char *line)
 {
 	if (strcmp(line, "sa") == 0)
@@ -278,7 +306,6 @@ void		command(t_stack **a, t_stack **b, char *line)
 	else if (strcmp(line, "rrr") == 0)
 		swap(&a);
 }
-
 void		parsing(t_stack **a, t_stack **b)
 {
 	char	*line;
@@ -290,13 +317,11 @@ void		parsing(t_stack **a, t_stack **b)
 		free(line);
 	}
 }
-
 int			main(int ac, char **av)
 {
     t_stack	*a;
 	t_stack	*b;
 	int i;
-
 	a = NULL;
 	b = NULL;
 	i = 1;
