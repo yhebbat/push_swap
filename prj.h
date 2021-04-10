@@ -6,7 +6,6 @@ typedef struct s_stack
 {
     int value;
     struct s_stack *suivant;
-    
 }t_stack;
 
 typedef struct s_list
