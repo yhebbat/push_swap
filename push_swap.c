@@ -1,5 +1,4 @@
 #include "prj.h"
-#include "get_next_line.h"
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -8,8 +7,7 @@ void		ft_exit()
 {
 	printf("Error\n");
 	exit(0);
-}
-
+}\
 void ft_remplir(t_list *head,char *str)
 {
 	t_stack	*a;
@@ -79,16 +77,48 @@ int	check_value(t_list *head, char *str)
 	return (0);
 }
 
-void	ft_command(char *line)
+void	swap(t_stack *lsd)
 {
-	printf("|%s|\n",line);
-	/*if (strcmp(line, "sa") == 0)
-		swap(&a);
+	int		tmp;
+
+	if (lsd == NULL)
+		ft_exit();
+	if (lsd->suivant != NULL)
+	{
+		tmp = lsd->value;
+		lsd->value = lsd->suivant->value;
+		lsd->suivant->value = tmp;
+	}
+}
+
+// void	push(t_stack *dest, t_stack *lsd, t_list *head)
+// {
+// 	if (lsd == NULL || dest == NULL)
+// 		ft_exit();
+// 	if (!lsd->value)
+// 	{
+
+// 	}
+// }
+
+void	ft_command(t_list *head, char *line)
+{
+	t_stack *a;
+	t_stack *b;
+
+	b = malloc(sizeof(t_stack));
+	a = head->header;
+	// printf("|%s|\n",line);
+	if (strcmp(line, "sa") == 0)
+		swap(a);
 	else if (strcmp(line, "sb") == 0)
-		swap(&b);
+		swap(b);
 	else if (strcmp(line, "ss") == 0)
-		swap(&a);
-	else if (strcmp(line, "pa") == 0)
+	{
+		swap(a);
+		swap(b);
+	}
+	/*else if (strcmp(line, "pa") == 0)
 		swap(&a);
 	else if (strcmp(line, "pb") == 0)
 		swap(&a);
@@ -106,17 +136,23 @@ void	ft_command(char *line)
 		swap(&a);*/
 }
 
-void	ft_get()
+void	ft_get(t_list *header)
 {
 	char *line;
+	t_stack *a;
 
 	while (get_next_line(0, &line))
 	{
 		if (strcmp(line, "") == 0)
 			break ;
-		ft_command(line);
+		ft_command(header, line);
 		free(line);
 	}
+	// while (a != NULL)
+	// {
+	// 	printf("%d\n",a->value);
+	// 	a = a->suivant;
+	// }
 }
 
 int main(int ac, char **av)
