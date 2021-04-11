@@ -4,6 +4,8 @@ void	swap(t_list *head)
 {
 	int		tmp;
 	t_stack	*lsd;
+
+	lsd = NULL;
     if (head->header != NULL)
 		lsd = head->header;
 

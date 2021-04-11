@@ -1,6 +1,5 @@
 #include "prj.h"
 
-
 void		ft_exit()
 {
 	printf("Error\n");
@@ -47,7 +46,6 @@ void	ft_command(t_list *head_a, t_list *head_b, char *line)
 void	ft_get(t_list *header_a, t_list *header_b)
 {
 	char *line;
-	t_stack *a;
 
 	while (get_next_line(0, &line))
 	{
@@ -58,16 +56,46 @@ void	ft_get(t_list *header_a, t_list *header_b)
 	}
 }
 
+void	ft_free(t_list *head)
+{
+	t_stack *to_free;
+
+	to_free = head->header;
+	while (to_free->suivant != NULL)
+	{
+		ft_depiler(head);
+		to_free = to_free->suivant;
+	}
+	free(head);
+}
+
+void	ft_checker(t_list *head)
+{
+	t_stack *to_check;
+
+	to_check = head->header;
+	while (to_check->suivant != NULL)
+	{
+		if (to_check->value > to_check->suivant->value)
+		{
+			printf("KO\n");
+			ft_free(head);
+			exit(0);
+		}
+		to_check = to_check->suivant;	
+	}
+	printf("OK\n");
+	ft_free(head);
+}
+
 int main(int ac, char **av)
 {
 	t_list *header;
 	t_list *header_b;
-	t_stack *a;
+	//t_stack *a;
 	// t_stack *b;
-	int i;
 
 	//a = NULL;
-	i = 1;
 	if (ac > 1)
 	{
 		//i = ac - 1;
@@ -84,13 +112,15 @@ int main(int ac, char **av)
 			ac--;
 		}
 		ft_get(header, header_b);
-		a = header->header;
-		//b = header_b->header;
-		while (a != NULL)
-		{
-			printf("|a|%d\n",a->value);
-			a = a->suivant;
-		}
+		// a = header->header;
+		// //b = header_b->header;
+        // printf("|a|\n");
+		// while (a != NULL)
+		// {
+		// 	printf("%d\n",a->value);
+		// 	a = a->suivant;
+		// }
+		ft_checker(header);
 		// while (b != NULL)
 		// {
 		// 	printf("|b|%d\n",b->value);
