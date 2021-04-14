@@ -12,8 +12,8 @@ void ft_depiler(t_list *head)
 		head->header = a->suivant;
 		free(a);
 	}
-	else
-		ft_exit();
+	/*else
+		ft_exit();*/
 }
 
 void ft_remplir(t_list *head, int val)
