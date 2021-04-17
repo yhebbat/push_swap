@@ -1,10 +1,10 @@
 #include "prj.h"
-
+/*
 void	ft_pushswap(t_list *head, t_list *head_b)
 {
-	
-}
 
+}
+*/
 int main(int ac, char **av)
 {
 	t_list *header;
