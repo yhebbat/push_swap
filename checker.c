@@ -59,7 +59,7 @@ void	ft_get(t_list *header_a, t_list *header_b)
 
 void	ft_free(t_list *head)
 {
-	while (head != NULL)
+	while (head->header != NULL)
 	{
 		ft_depiler(head);
 	}
@@ -76,8 +76,7 @@ void	ft_checker(t_list *head)
 		if (to_check->value > to_check->suivant->value)
 		{
 			printf("KO\n");
-			ft_free(head);
-			exit(0);
+			return ;
 		}
 		to_check = to_check->suivant;	
 	}
@@ -88,13 +87,9 @@ int main(int ac, char **av)
 {
 	t_list *header;
 	t_list *header_b;
-	t_stack *a;
-	// t_stack *b;
-
-	//a = NULL;
+	//t_stack *a;
 	if (ac > 1)
 	{
-		//i = ac - 1;
 		header = malloc(sizeof(t_list));
 		header_b = malloc(sizeof(t_list));
 		header->header = NULL;
@@ -108,25 +103,17 @@ int main(int ac, char **av)
 			ac--;
 		}
 		ft_get(header, header_b);
-		a = header->header;
-		// //b = header_b->header;
-        printf("|a|\n");
-		while (a != NULL)
-		{
-			printf("%d\n",a->value);
-			a = a->suivant;
-		}
+		// a = header->header;
+        // printf("|a|\n");
+		// while (a != NULL)
+		// {
+		// 	printf("%d\n",a->value);
+		// 	a = a->suivant;
+		// }
 		ft_checker(header);
 		ft_free(header);
 		ft_free(header_b);
-		int i = 1;
-		while (i == 1)
-			i = 1;
-		// while (b != NULL)
-		// {
-		// 	printf("|b|%d\n",b->value);
-		// 	b = b->suivant;
-		// }
+		exit(0);
 	}
 	else
 		ft_exit();

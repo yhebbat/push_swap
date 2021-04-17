@@ -29,3 +29,5 @@ int		check_value(t_list *head, char *str);
 void	ft_command(t_list *head_a, t_list *head_b, char *line);
 void	ft_get(t_list *header_a, t_list *header_b);
 void	ft_exit();
+void	ft_checker(t_list *head);
+void	ft_free(t_list *head);
