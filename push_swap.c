@@ -34,7 +34,7 @@ int main(int ac, char **av)
 			a = a->suivant;
 		}
 		//ft_checker(header);
-		ft_pushswap(header, header_b);
+		// ft_pushswap(header, header_b);
 	}
 	else
 		ft_exit();
