@@ -1,4 +1,4 @@
-SRC1 =	checker.c get_next_line.c get_next_line_utils.c pile.c operations.c to_check.c
+SRC1 =	checker.c get_next_line.c get_next_line_utils.c pile.c operations.c to_check.c utils.c
 
 OBJECT = $(SRC1:.c=.o)
 

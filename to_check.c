@@ -33,7 +33,7 @@ int			check_duplicate(t_list *head, char *str)
 int			check_overflow(char *str)
 {
 	long long r;
-	
+
 	r = atoi(str);
 	if (r > 2147483647 || r < -2147483648)
 		return (1);

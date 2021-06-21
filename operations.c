@@ -55,8 +55,8 @@ void rotate(t_list *tesla)
 
 void	reverse_rotate(t_list *tesla)
 {
-	t_stack *me;
-	t_stack *new;
+	t_stack	*me;
+	t_stack	*new;
 	int		tmp;
 
 	me = tesla->header;
@@ -64,6 +64,7 @@ void	reverse_rotate(t_list *tesla)
 	{
 		while (me->suivant->suivant != NULL)
 			me = me->suivant;
+		//printf("%d\n", me->suivant->value);
 		if (me->suivant->suivant == NULL)
 		{
 			tmp = me->suivant->value;
