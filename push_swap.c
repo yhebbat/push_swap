@@ -160,6 +160,15 @@ void	ft_sort5(t_list *head, t_list *head_b)
 	printf("pa\n");
 }
 
+void	ft_sort(t_list *head_a, t_list head_b)
+{
+	t_stack *a;
+	t_stack *b;
+
+	a = head_a->header;
+	b = head_b->header;
+}
+
 void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 {
 	if (ac == 3)
@@ -170,6 +179,8 @@ void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 		ft_sortttt(head, head_b);
 	if (ac == 6)
 		ft_sort5(head, head_b);
+	if (ac > 6)
+		ft_sort(head, head_b);
 }
 
 int main(int ac, char **av)

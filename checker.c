@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 {
 	t_list	*header;
 	t_list	*header_b;
-	t_stack *a;
+	//t_stack *a;
 
 	if (ac > 1)
 	{
