@@ -151,7 +151,7 @@ void	ft_sort5(t_list *head, t_list *head_b)
 	else if (i == 4)
 	{
 		reverse_rotate(head);
-		printf("rra\n");		
+		printf("rra\n");
 	}
 	push(head_b, head);
 	printf("pb\n");
@@ -160,13 +160,59 @@ void	ft_sort5(t_list *head, t_list *head_b)
 	printf("pa\n");
 }
 
-void	ft_sort(t_list *head_a, t_list head_b)
+void	ft_sorted(int max, t_list *head)
+{
+	int t[max];
+	int i;
+	int k;
+	int tmp;
+	t_stack *a;
+
+	i = 0;
+	a = head->header;
+	
+	while (i < max)
+	{
+		t[i] = a->value;
+		a = a->suivant;
+		i++;
+	}
+	i = 0;
+	while ( i < max)
+	{
+		k = 0;
+		while (k < max - i - 1)
+		{
+			if (t[k] > t[k + 1])
+			{
+				tmp = t[k];
+				t[k] = t[k + 1];
+				t[k + 1] = tmp;
+			}
+			k++;
+		}
+		i++;
+	}
+	k = 0;
+	while(k < max)
+		printf("%d\n", t[k++]);
+	
+}
+
+void	ft_sort(t_list *head_a, t_list *head_b)
 {
 	t_stack *a;
 	t_stack *b;
+	int		i = 1;
 
 	a = head_a->header;
 	b = head_b->header;
+	while (a->suivant != NULL)
+	{
+		i++;
+		a = a->suivant;
+	}
+	ft_sorted(i, head_a);
 }
 
 void	ft_pushswap(t_list *head, t_list *head_b, int ac)
@@ -181,6 +227,20 @@ void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 		ft_sort5(head, head_b);
 	if (ac > 6)
 		ft_sort(head, head_b);
+}
+
+int	ft_check(t_list *head)
+{
+	t_stack	*to_check;
+
+	to_check = head->header;
+	while (to_check->suivant != NULL)
+	{
+		if (to_check->value > to_check->suivant->value)
+			return (1);
+		to_check = to_check->suivant;
+	}
+	return (0);
 }
 
 int main(int ac, char **av)
@@ -206,8 +266,9 @@ int main(int ac, char **av)
 				ft_remplir(header, atoi(av[i - 1]));
 			i--;
 		}
-		//ft_get(header, header_b);
-		ft_pushswap(header, header_b, ac);
+		// ft_get(header, header_b);
+		if (ft_check(header))
+			ft_pushswap(header, header_b, ac);
 		// a = header->header;
 		// while (a != NULL)
 		// {
