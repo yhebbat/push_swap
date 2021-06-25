@@ -160,9 +160,8 @@ void	ft_sort5(t_list *head, t_list *head_b)
 	printf("pa\n");
 }
 
-void	ft_sorted(int max, t_list *head)
+void	ft_sorted(int max, t_list *head, int *t)
 {
-	int t[max];
 	int i;
 	int k;
 	int tmp;
@@ -193,10 +192,88 @@ void	ft_sorted(int max, t_list *head)
 		}
 		i++;
 	}
-	k = 0;
-	while(k < max)
-		printf("%d\n", t[k++]);
+
+	// k = 0;
+	// while(k < max)
+	// 	printf("%d\n", t[k++]);	
+}
+
+// void	to_divise(int *t, int number, int max)
+// {
+// 	int step;
+
+// 	step = max / number;
+// }
+
+// void	move_to_b(t_data *m, int delim)
+// {
+// 	int step;
+// 	int	i;
+
+// 	m->pos = 0;
+// 	i = 0;
+// 	if (delim == 4)
+// 		step = m->a_size / 5;
+// 	else
+// 		step = m->a_size / 11;
+// 	while (i <= delim)
+// 	{
+// 		if (i == delim)
+// 		{
+// 			move_b(m, m->dup[i * step + 1], m->dup[m->dup_size - 1]);
+// 			break;
+// 		}
+// 		if (i == 0)
+// 		{
+// 			move_b(m, m->dup[0], m->dup[step * (i + 1)]);
+// 			i++;
+// 			continue;
+// 		}
+// 		move_b(m, m->dup[i * step + 1], m->dup[step * (i + 1)]);
+// 		i++;
+// 	}
+// }
+
+void	move_to_b(t_list *head_a, t_list *head_b, int min, int max)
+{
 	
+}
+
+void	divise5(int *t, t_list *head_a, t_list *head_b)
+{
+	t_stack *a;
+	t_stack *b;
+	int		max;
+	int		step;
+	int		i;
+
+	i = 0;
+	max = 0;
+	a = head_a->header;
+	b = head_b->header;
+	while (t[max])
+		max++;
+	step = max / 5;
+	move_to_b(head_a, head_b, t[0], t[step]);
+	move_to_b(head_a, head_b, t[step + 1], t[2 * step]);
+	move_to_b(head_a, head_b, t[(2 * step) + 1], t[3 * step]);
+	move_to_b(head_a, head_b, t[3 * step + 1], t[max]);
+}
+
+void	sort_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
+{
+	int *t;
+	// t_stack *a;
+	// t_stack *b;
+	
+	t = malloc(sizeof(int) * size_a);
+	ft_sorted(size_a, head_a, t);
+	// a = head_a->header;
+	// b = head_b->header;
+	if (size_a <= 100)
+		divise5(t, head_a, head_b);
+	// to_divise(t, 5, i);
+	free(t);
 }
 
 void	ft_sort(t_list *head_a, t_list *head_b)
@@ -212,20 +289,20 @@ void	ft_sort(t_list *head_a, t_list *head_b)
 		i++;
 		a = a->suivant;
 	}
-	ft_sorted(i, head_a);
+	sort_more_than_five_numbers(head_a, head_b, i);
 }
 
 void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 {
 	if (ac == 3)
 		ft_sortt(head);
-	if (ac == 4)
+	else if (ac == 4)
 		ft_sorttt(head);
-	if (ac == 5)
+	else if (ac == 5)
 		ft_sortttt(head, head_b);
-	if (ac == 6)
+	else if (ac == 6)
 		ft_sort5(head, head_b);
-	if (ac > 6)
+	else if (ac <= 101)
 		ft_sort(head, head_b);
 }
 

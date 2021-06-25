@@ -92,9 +92,12 @@ void	ft_get(t_list *header_a, t_list *header_b)
 
 void	ft_free(t_list *head)
 {
-	while (head->header != NULL)
+	if(head)
 	{
-		ft_depiler(head);
-	}
+		while (head->header != NULL)
+		{
+			ft_depiler(head);
+		}
 	free(head);
+	}
 }

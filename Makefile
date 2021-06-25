@@ -7,10 +7,10 @@ NAME = checker.a
 all : $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror -c $(SRC1)
+	@gcc -Wall -Wextra -Werror -c $(SRC1) 
 	@ar rc $(NAME) $(OBJECT)
 	@ranlib $(NAME)
-	@gcc checker.c $(NAME) -o checker
+	@gcc checker.c $(NAME) -fsanitize=address -g3 -o checker
 
 clean:
 	@rm -f $(OBJECT)

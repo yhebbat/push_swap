@@ -9,11 +9,13 @@ typedef struct s_stack
 {
     int value;
     struct s_stack *suivant;
+    struct s_stack *preced;
 }t_stack;
 
 typedef struct s_list
 {
     struct s_stack *header;
+    struct s_stack *footer;
 }t_list;
 
 void	swap(t_list *head);
@@ -35,4 +37,6 @@ void	ft_compare1(t_list *head_a, t_list *head_b, char *line);
 void	ft_compare2(t_list *head_a, t_list *head_b, char *line);
 void	ft_compare3(t_list *head_a, t_list *head_b, char *line);
 void	ft_free(t_list *head);
+
+void ft_depiler2(t_stack **a);
 //static void	ft_putstr(char *c);

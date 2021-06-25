@@ -30,7 +30,8 @@ int	main(int ac, char **av)
 {
 	t_list	*header;
 	t_list	*header_b;
-	//t_stack *a;
+	t_stack *a;
+	t_stack *x;
 
 	if (ac > 1)
 	{
@@ -38,6 +39,8 @@ int	main(int ac, char **av)
 		header_b = malloc(sizeof(t_list));
 		header->header = NULL;
 		header_b->header = NULL;
+		header->footer = NULL;
+		header_b->footer = NULL;
 		while (ac - 1 > 0)
 		{
 			if (check_value(header, av[ac - 1]))
@@ -46,16 +49,28 @@ int	main(int ac, char **av)
 				ft_remplir(header, atoi(av[ac - 1]));
 			ac--;
 		}
-		ft_get(header, header_b);
-		ft_checker(header);
-		// a = header->header;
-		// while (a != NULL)
-		// {
-		// 	printf("%d\n",a->value);
-		// 	a = a->suivant;
-		// }
-		ft_free(header);
-		ft_free(header_b);
+		// ft_get(header, header_b);
+		// ft_checker(header);
+		a = header->header;
+		printf("header : %d\n", header->header->value);
+		printf("footer : %d\n",header->footer->value);
+		while (a != NULL)
+		{
+			printf("%d\n",a->value);
+			a = a->suivant;
+		}
+		ft_depiler(header);
+		// ft_depiler(header);
+		x = header->footer;
+		printf("header : %d\n", header->header->value);
+		printf("footer : %d\n",header->footer->value);
+		while (x != NULL)
+		{
+			printf("%d\n",x->value);
+			x = x->preced;
+		}
+		// ft_free(header);
+		// ft_free(header_b);
 		exit(0);
 	}
 	else
