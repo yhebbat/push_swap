@@ -198,41 +198,6 @@ void	ft_sorted(int max, t_list *head, int *t)
 	// 	printf("%d\n", t[k++]);	
 }
 
-// void	to_divise(int *t, int number, int max)
-// {
-// 	int step;
-
-// 	step = max / number;
-// }
-
-// void	move_to_b(t_data *m, int delim)
-// {
-// 	int step;
-// 	int	i;
-
-// 	m->pos = 0;
-// 	i = 0;
-// 	if (delim == 4)
-// 		step = m->a_size / 5;
-// 	else
-// 		step = m->a_size / 11;
-// 	while (i <= delim)
-// 	{
-// 		if (i == delim)
-// 		{
-// 			move_b(m, m->dup[i * step + 1], m->dup[m->dup_size - 1]);
-// 			break;
-// 		}
-// 		if (i == 0)
-// 		{
-// 			move_b(m, m->dup[0], m->dup[step * (i + 1)]);
-// 			i++;
-// 			continue;
-// 		}
-// 		move_b(m, m->dup[i * step + 1], m->dup[step * (i + 1)]);
-// 		i++;
-// 	}
-// }
 
 int		find_the_first_num(t_list *head_a, int min, int max)
 {
@@ -245,14 +210,14 @@ int		find_the_first_num(t_list *head_a, int min, int max)
 	k = 0;
 	a_top = head_a->header;
 	a_bot = head_a->footer;
-	while (!a_top)
+	while (a_top != NULL)
 	{
 		i++;
 		if (a_top->value >= min && a_top->value <= max)
 			break;
 		a_top = a_top->suivant;
 	}
-	while (!a_bot)
+	while (a_bot != NULL)
 	{
 		k++;
 		if (a_bot->value >= min && a_bot->value <= max)
@@ -260,22 +225,57 @@ int		find_the_first_num(t_list *head_a, int min, int max)
 		a_bot = a_bot->preced;
 	}
 	if (k < i)
-		return (a_bot->value);
+		return (1);
 	else
-		return (a_top->value);
+		return (0);
 }
 
 void	move_to_b(t_list *head_a, t_list *head_b, int min, int max)
 {
 	int first;
-	t_stack *a;
+	t_stack *up;
+	t_stack *down;
 
-	a = head_a->header;
+	down = head_a->footer;
+	up = head_a->header;
 	first = find_the_first_num(head_a, min, max);
-	while (a->value != first)
+	// printf("%d\n", first);
+	if (first == 1)
 	{
-		
-		a = a->suivant;
+		while (down != NULL/*down->value < min || down->value > max*/)
+		{
+			if (down->value < min || down->value > max)
+			{
+				reverse_rotate(head_a);
+				printf("rra\n");
+			}
+			else if (down->value >= min && down->value <= max)
+			{
+				reverse_rotate(head_a);
+				push(head_b, head_a);
+				printf("rra\npb\n");
+				break ;
+			}
+			down = down->preced;
+		}
+	}
+	if (first == 0)
+	{
+		while (up != NULL)
+		{
+			if (up->value < min || up->value > max)
+			{
+				rotate(head_a);
+				printf("ra\n");
+			}
+			else if (up->value >= min && up->value <= max)
+			{
+				push(head_b, head_a);
+				printf("pb\n");
+				break ;
+			}
+			up = up->suivant;
+		}
 	}
 }
 
@@ -294,10 +294,17 @@ void	divise5(int *t, t_list *head_a, t_list *head_b)
 	while (t[max])
 		max++;
 	step = max / 5;
-	move_to_b(head_a, head_b, t[0], t[step]);
-	move_to_b(head_a, head_b, t[step + 1], t[2 * step]);
-	move_to_b(head_a, head_b, t[(2 * step) + 1], t[3 * step]);
-	move_to_b(head_a, head_b, t[3 * step + 1], t[max]);
+	while (i <= step)
+	{
+		move_to_b(head_a, head_b, t[0], t[step]);
+		a = head_a->header;
+		b = head_b->header;
+		printf("....\n");
+		i++;
+	}
+	// move_to_b(head_a, head_b, t[step + 1], t[2 * step]);
+	// move_to_b(head_a, head_b, t[(2 * step) + 1], t[3 * step]);
+	// move_to_b(head_a, head_b, t[3 * step + 1], t[max]);
 }
 
 void	sort_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)

@@ -59,7 +59,8 @@ int	main(int ac, char **av)
 			printf("%d\n",a->value);
 			a = a->suivant;
 		}
-		rotate(header);
+		//rotate(header);
+		swap(header);
 		a = header->header;
 		printf("after----header : %p\n", header->header->suivant);
 		printf("after----footer : %p\n",header->footer->preced);
