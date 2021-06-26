@@ -33,23 +33,19 @@ void	push(t_list *dest, t_list *depart)
 
 void rotate(t_list *tesla)
 {
-	t_stack *me;
-	t_stack *new;
-	int		tmp;
+	t_stack	*me;
+	t_stack	*new;
 
-	me = tesla->header;
-	if (me != NULL && me->suivant != NULL)
+	me = tesla->footer;
+	new = tesla->header;
+	if (new != NULL && new->suivant != NULL)
 	{
-		tmp = me->value;
-		tesla->header = me->suivant;
-		new = malloc(sizeof(t_stack));
-		new->value = tmp;
-		new->suivant = NULL;
-		free(me);
-		me = tesla->header;
-		while (me->suivant != NULL)
-			me = me->suivant;
+		new->preced = tesla->footer;
 		me->suivant = new;
+		tesla->header = new->suivant;
+		tesla->header->preced = NULL;
+		tesla->footer = new;
+		tesla->footer->suivant = NULL;
 	}
 }
 
@@ -57,23 +53,16 @@ void	reverse_rotate(t_list *tesla)
 {
 	t_stack	*me;
 	t_stack	*new;
-	int		tmp;
 
-	me = tesla->header;
-	if (me != NULL && me->suivant != NULL)
+	me = tesla->footer;
+	new = tesla->header;
+	if (me != NULL && me->preced != NULL)
 	{
-		while (me->suivant->suivant != NULL)
-			me = me->suivant;
-		//printf("%d\n", me->suivant->value);
-		if (me->suivant->suivant == NULL)
-		{
-			tmp = me->suivant->value;
-			free(me->suivant);
-			me->suivant = NULL;
-			new = malloc(sizeof(t_stack));
-			new->value = tmp;
-			new->suivant = tesla->header;
-			tesla->header = new;
-		}
+		me->suivant = tesla->header;
+		new->preced = me;
+		tesla->footer = me->preced;
+		tesla->footer->suivant = NULL;
+		tesla->header = me;
+		tesla->header->preced = NULL;
 	}
 }

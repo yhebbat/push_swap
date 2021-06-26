@@ -234,9 +234,49 @@ void	ft_sorted(int max, t_list *head, int *t)
 // 	}
 // }
 
+int		find_the_first_num(t_list *head_a, int min, int max)
+{
+	t_stack *a_top;
+	t_stack *a_bot;
+	int i;
+	int k;
+
+	i = 0;
+	k = 0;
+	a_top = head_a->header;
+	a_bot = head_a->footer;
+	while (!a_top)
+	{
+		i++;
+		if (a_top->value >= min && a_top->value <= max)
+			break;
+		a_top = a_top->suivant;
+	}
+	while (!a_bot)
+	{
+		k++;
+		if (a_bot->value >= min && a_bot->value <= max)
+			break;
+		a_bot = a_bot->preced;
+	}
+	if (k < i)
+		return (a_bot->value);
+	else
+		return (a_top->value);
+}
+
 void	move_to_b(t_list *head_a, t_list *head_b, int min, int max)
 {
-	
+	int first;
+	t_stack *a;
+
+	a = head_a->header;
+	first = find_the_first_num(head_a, min, max);
+	while (a->value != first)
+	{
+		
+		a = a->suivant;
+	}
 }
 
 void	divise5(int *t, t_list *head_a, t_list *head_b)

@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 	t_list	*header;
 	t_list	*header_b;
 	t_stack *a;
-	t_stack *x;
+	// t_stack *x;
 
 	if (ac > 1)
 	{
@@ -49,25 +49,36 @@ int	main(int ac, char **av)
 				ft_remplir(header, atoi(av[ac - 1]));
 			ac--;
 		}
-		// ft_get(header, header_b);
-		// ft_checker(header);
+		ft_get(header, header_b);
+		ft_checker(header);
 		a = header->header;
-		printf("header : %d\n", header->header->value);
-		printf("footer : %d\n",header->footer->value);
+		printf("header : %p\n", header->header->suivant);
+		printf("footer : %p\n",header->footer->preced);
 		while (a != NULL)
 		{
 			printf("%d\n",a->value);
 			a = a->suivant;
 		}
-		printf("%d",header->header->value);
-		x = header->footer;
-		printf("header : %d\n", header->header->value);
-		printf("footer : %d\n",header->footer->value);
-		while (x != NULL)
+		rotate(header);
+		a = header->header;
+		printf("after----header : %p\n", header->header->suivant);
+		printf("after----footer : %p\n",header->footer->preced);
+		while (a != NULL)
 		{
-			printf("%d\n",x->value);
-			x = x->preced;
+			printf("%d\n",a->value);
+			a = a->suivant;
 		}
+		// ft_depiler(header);
+		// ft_depiler(header);
+		// printf("%d",header->header->value);
+		// x = header->footer;
+		// printf("header : %d\n", header->header->value);
+		// printf("footer : %d\n",header->footer->value);
+		// while (x != NULL)
+		// {
+		// 	printf("%d\n",x->value);
+		// 	x = x->preced;
+		// }
 		ft_free(header);
 		ft_free(header_b);
 		exit(0);
