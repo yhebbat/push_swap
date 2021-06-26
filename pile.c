@@ -8,10 +8,13 @@ void ft_depiler(t_list *head)
 	if (head != NULL && head->header != NULL)
 	{
 		to_delete = head->header;
+		// printf("------\n");
 		if (!to_delete->suivant)
 		{
+			// printf("%p\n", to_delete->suivant);
 			free(to_delete);
-			//to_delete = NULL;
+			head->header = NULL;
+			to_delete = NULL;
 		}
 		else
 		{
@@ -19,7 +22,7 @@ void ft_depiler(t_list *head)
 			head->header = a;
 			a->preced = NULL;
 			free(to_delete);
-			//to_delete = NULL;
+			to_delete = NULL;
 		}
 	}
 }

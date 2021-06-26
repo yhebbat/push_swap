@@ -59,8 +59,7 @@ int	main(int ac, char **av)
 			printf("%d\n",a->value);
 			a = a->suivant;
 		}
-		ft_depiler(header);
-		// ft_depiler(header);
+		printf("%d",header->header->value);
 		x = header->footer;
 		printf("header : %d\n", header->header->value);
 		printf("footer : %d\n",header->footer->value);
@@ -69,8 +68,8 @@ int	main(int ac, char **av)
 			printf("%d\n",x->value);
 			x = x->preced;
 		}
-		// ft_free(header);
-		// ft_free(header_b);
+		ft_free(header);
+		ft_free(header_b);
 		exit(0);
 	}
 	else
