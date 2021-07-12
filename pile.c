@@ -28,7 +28,7 @@ void ft_depiler(t_list *head)
 }
 
 
-void ft_remplir(t_list *head, int val)
+void ft_remplir(t_list *head, int val, int index, int bool)
 {
 	t_stack	*a;
 	t_stack *to_add;
@@ -38,6 +38,8 @@ void ft_remplir(t_list *head, int val)
 		ft_exit();
 	if (head->header == NULL)
 	{
+		to_add->index = index;
+		to_add->bool = bool;
 		to_add->value = val;
 		to_add->suivant = NULL;
 		to_add->preced = NULL;
@@ -47,6 +49,8 @@ void ft_remplir(t_list *head, int val)
 	else
 	{
 		a = head->header;
+		to_add->index = index;
+		to_add->bool = bool;
 		to_add->value = val;
 		to_add->suivant = a;
 		to_add->preced = NULL;

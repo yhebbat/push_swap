@@ -9,28 +9,11 @@ static void	ft_putstr(char *c)
 		write(1, &c[i++], 1);
 }
 
-void	ft_checker(t_list *head)
-{
-	t_stack	*to_check;
-
-	to_check = head->header;
-	while (to_check->suivant != NULL)
-	{
-		if (to_check->value > to_check->suivant->value)
-		{
-			ft_putstr("KO\n");
-			return ;
-		}
-		to_check = to_check->suivant;
-	}
-	ft_putstr("OK\n");
-}
-
 int	main(int ac, char **av)
 {
 	t_list	*header;
 	t_list	*header_b;
-	t_stack *a;
+	// t_stack *a;
 	// t_stack *x;
 
 	if (ac > 1)
@@ -46,29 +29,32 @@ int	main(int ac, char **av)
 			if (check_value(header, av[ac - 1]))
 				ft_exit();
 			else
-				ft_remplir(header, atoi(av[ac - 1]));
+				ft_remplir(header, atoi(av[ac - 1]), -1, 0);
 			ac--;
 		}
 		ft_get(header, header_b);
-		ft_checker(header);
-		a = header->header;
-		printf("header : %p\n", header->header->suivant);
-		printf("footer : %p\n",header->footer->preced);
-		while (a != NULL)
-		{
-			printf("%d\n",a->value);
-			a = a->suivant;
-		}
+		if (ft_checker(header))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+		// a = header->header;
+		// printf("header : %p\n", header->header->suivant);
+		// printf("footer : %p\n",header->footer->preced);
+		// while (a != NULL)
+		// {
+		// 	printf("%d\n",a->value);
+		// 	a = a->suivant;
+		// }
 		//rotate(header);
-		swap(header);
-		a = header->header;
-		printf("after----header : %p\n", header->header->suivant);
-		printf("after----footer : %p\n",header->footer->preced);
-		while (a != NULL)
-		{
-			printf("%d\n",a->value);
-			a = a->suivant;
-		}
+		// swap(header);
+		// a = header->header;
+		// printf("after----header : %p\n", header->header->suivant);
+		// printf("after----footer : %p\n",header->footer->preced);
+		// while (a != NULL)
+		// {
+		// 	printf("%d\n",a->value);
+		// 	a = a->suivant;
+		// }
 		// ft_depiler(header);
 		// ft_depiler(header);
 		// printf("%d",header->header->value);
