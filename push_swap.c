@@ -12,6 +12,20 @@ void	ft_sortt(t_list *head)
 	}
 }
 
+int	ft_check(t_list *head)
+{
+	t_stack	*to_check;
+
+	to_check = head->header;
+	while (to_check->suivant != NULL)
+	{
+		if (to_check->value > to_check->suivant->value)
+			return (1);
+		to_check = to_check->suivant;
+	}
+	return (0);
+}
+
 void	ft_sorttt(t_list *head)
 {
 	t_stack *a;
@@ -55,15 +69,15 @@ void	ft_sorttt(t_list *head)
 void	ft_sortttt(t_list *head, t_list *head_b)
 {
 	t_stack *a;
-	t_stack *b;
+	// t_stack *b;
 	int tmp;
 	int i;
-	int k;
+	//int k;
 
 	i = 0;
-	k = 0;
+	//k = 0;
 	a = head->header;
-	b = head_b->header;
+	// b = head_b->header;
 	tmp = a->value;
 	while (a->suivant != NULL)
 	{
@@ -107,13 +121,13 @@ void	ft_sortttt(t_list *head, t_list *head_b)
 void	ft_sort5(t_list *head, t_list *head_b)
 {
 	t_stack *a;
-	t_stack *b;
+	// t_stack *b;
 	int tmp;
 	int i;
 
 	i = 0;
 	a = head->header;
-	b = head_b->header;
+	// b = head_b->header;
 	tmp = a->value;
 	while (a->suivant != NULL)
 	{
@@ -193,9 +207,9 @@ void	ft_sorted(int max, t_list *head, int *t)
 		i++;
 	}
 
-	// k = 0;
+	 //k = 0;
 	// while(k < max)
-	// 	printf("%d\n", t[k++]);	
+	 	//printf("%d\n", t[k++]);	
 }
 
 int		find_the_first_num(t_list *head_a, int min, int max)
@@ -321,7 +335,7 @@ void		size(t_list *head_a, t_list *head_b, int *t)
 	{
 		if (a->index < t[MINA])
 			t[MINA] = a->index;
-		if (a->index > t[MAXA])
+		else if (a->index > t[MAXA])
 			t[MAXA] = a->index;
 		t[LENA]++;
 		a = a->suivant;
@@ -332,9 +346,19 @@ void		size(t_list *head_a, t_list *head_b, int *t)
 		b = b->suivant;
 	}
 }
-
-void	best_pos_a(int *t, t_stack *a, t_stack *b)
+/*
+void	best_pos_a(int *t, t_list *head_a, t_stack *b)
 {
+	t_stack *a;
+	t_stack *lasta;
+
+	a = head_a->header;
+	lasta = head_a->footer;
+	//printf("%d %d %d %d %d\n", t[MINA], t[MAXA],t[LENA], t[FROMUPA], t[NBRINSA]);
+	//exit(0);
+	// printf("|a|-%d\n", a->suivant->index);
+	// printf("|b|-%d\n", b->index);
+	//exit(0);
 	while (a)
 	{
 		if (t[MINA] > b->index)
@@ -347,7 +371,7 @@ void	best_pos_a(int *t, t_stack *a, t_stack *b)
 			}
 			break ;
 		}
-		if (t[MAXA] < b->index)
+		else if (t[MAXA] < b->index)
 		{
 			while (a->index != t[MAXA])
 			{
@@ -356,60 +380,158 @@ void	best_pos_a(int *t, t_stack *a, t_stack *b)
 				t[NBRINSA]++;
 				a = a->suivant;
 			}
+			if (t[NBRINSA] < t[LENA] / 2)
+				t[NBRINSA]++;
+			else
+				t[NBRINSA]--;
 			break ;
 		}
-		if (b->index > t[MINA] && b->index < t[MAXA])
+		else if(b->index > a->index)
 		{
-			if (a->preced == NULL)
+			while (b->index > a->index)
 			{
-				t[FROMUPA] = 1;
-				a = a->suivant;
-				t[NBRINSA]++;
-			}
-			while (!(b->index < a->index && b->index > a->preced->index))
-			{
-				t[FROMUPA] = 1;
 				t[NBRINSA]++;
 				a = a->suivant;
 			}
 			break ;
 		}
+		else
+		{
+			while (b->index > lasta->index)
+			{
+				t[NBRINSA]++;
+				a = a->preced;
+			}
+			t[NBRINSA] = t[LENA] - t[NBRINSA];
+			if (t[NBRINSA] < t[LENA] / 2)
+				t[NBRINSA]++;
+			else
+				t[NBRINSA]--;
+			break ;
+		}
+		// else if (b->index > t[MINA] && b->index < t[MAXA])
+		// {
+		// 	// if (a->preced == NULL)
+		// 	// {
+		// 	// 	t[FROMUPA] = 1;
+		// 	// 	a = a->suivant;
+		// 	// 	//t[NBRINSA]++;
+		// 	// }
+		// 	while (a && !(b->index < a->suivant->index && b->index > a->index))
+		// 	{
+		// 		t[FROMUPA] = 1;
+		// 		t[NBRINSA]++;
+		// 		a = a->suivant;
+		// 	}
+		// 	break ;
+		// }
 	}
 }
-
-void	number_of_instructions(int *t)
+*/
+void	number_of_instructions(int *t, int v, int NB)
 {
 	if (t[NBRINSA] > (t[LENA] / 2))
 	{
 		t[FROMUPA] = 0;
 		t[NBRINSA] = t[LENA] - t[NBRINSA];
 	}
-	if (t[NBRINSB] > (t[LENB] / 2))
+	if (NB > (t[LENB] / 2))
 	{	
 		t[FROMUPB] = 0;
-		t[NBRINSB] = t[LENB] - t[NBRINSB];
+		NB = t[LENB] - NB;
 	}
-	t[NBRINSAB] = t[NBRINSA] + t[NBRINSB];
+	t[NBRINSA] += v;
+	if (t[FROMUPB] == t[FROMUPA])
+	{
+	 	if(t[NBRINSA] > NB)
+	 		t[NBRINSAB] = t[NBRINSA];
+	 	else
+	 		t[NBRINSAB] = NB;
+	 }
+	else
+		t[NBRINSAB] = t[NBRINSA] + NB;
 	if (t[NBAB] > t[NBRINSAB])
 	{
 		t[UPA] = t[FROMUPA];
 		t[UPB] = t[FROMUPB];
 		t[NBA] = t[NBRINSA];
-		t[NBB] = t[NBRINSB];
+		t[NBB] = NB;
 		t[NBAB] = t[NBRINSAB];
 	}
 }
+void	find_element(int *t, t_list *head_a, t_stack *b)
+{
+	int		v;
+	int		NB;
+	t_stack *a;
+
+	NB = 0;
+	while (b)
+	{
+		a = head_a->header;
+		t[FROMUPB] = 1;
+		v = 0;
+		t[NBRINSA] = 0;
+		if (b->index < t[MINA])
+		{
+			t[FROMUPA] = 1;
+			while (a->index != t[MINA])
+			{
+				t[NBRINSA]++;
+				a = a->suivant;
+			}
+			//break ;
+		}
+		else if(b->index > t[MAXA])
+		{
+			t[FROMUPA] = 1;
+			while (a->index != t[MAXA])
+			{
+				t[NBRINSA]++;
+				a = a->suivant;
+			}
+			if (t[NBRINSA] > (t[LENA] / 2))
+				v = -1;
+			else
+				v = 1;
+			//break ;
+		}
+		else
+		{
+			t[NBRINSA] = 1;
+			t[FROMUPA] = 1;
+			while (a->suivant && !(b->index < a->suivant->index && b->index > a->index))
+			{
+				t[NBRINSA]++;
+				a = a->suivant;
+			}
+			if (a->suivant == NULL)
+			{
+				t[NBRINSA] = 0;
+			}
+			//break ;
+		}
+		number_of_instructions(t, v, NB);
+		b = b->suivant;
+		//printf("%d  %d\n", NB, t[LENB]);
+		NB++;
+	}
+	
+}
+
 
 void	from_upa(int *t, t_list *head_a, t_list *head_b)
 {
-	while (t[NBA] != 0)
+	// printf("%d\n",t[NBA]);
+	// exit(0);
+	while (t[NBA] > 0)
 	{
 		rotate(head_a);
 		printf("ra\n");
 		t[NBA]--;
 	}
-	while (t[NBB] != 0)
-	{
+	while (t[NBB] > 0)
+	{	
 		reverse_rotate(head_b);
 		printf("rrb\n");
 		t[NBB]--;
@@ -420,13 +542,13 @@ void	from_upa(int *t, t_list *head_a, t_list *head_b)
 
 void	from_upb(int *t, t_list *head_a, t_list *head_b)
 {
-	while (t[NBA] != 0)
+	while (t[NBA] > 0)
 	{
 		reverse_rotate(head_a);
 		printf("rra\n");
 		t[NBA]--;
 	}
-	while (t[NBB] != 0)
+	while (t[NBB] > 0)
 	{
 		rotate(head_b);
 		printf("rb\n");
@@ -438,7 +560,7 @@ void	from_upb(int *t, t_list *head_a, t_list *head_b)
 
 void	from_upab(int *t, t_list *head_a, t_list *head_b)
 {
-	while (t[NBA] != 0 && t[NBB] != 0)
+	while (t[NBA] > 0 && t[NBB] > 0)
 	{
 		rotate(head_a);
 		rotate(head_b);
@@ -446,13 +568,13 @@ void	from_upab(int *t, t_list *head_a, t_list *head_b)
 		t[NBA]--;
 		t[NBB]--;
 	}
-	while (t[NBA] != 0)
+	while (t[NBA] > 0)
 	{
 		rotate(head_a);
 		printf("ra\n");
 		t[NBA]--;
 	}
-	while (t[NBB] != 0)
+	while (t[NBB] > 0)
 	{
 		rotate(head_b);
 		printf("rb\n");	
@@ -464,7 +586,7 @@ void	from_upab(int *t, t_list *head_a, t_list *head_b)
 
 void	from_downab(int *t, t_list *head_a, t_list *head_b)
 {
-	while (t[NBA] != 0 && t[NBB] != 0)
+	while (t[NBA] > 0 && t[NBB] > 0)
 	{
 		reverse_rotate(head_a);
 		reverse_rotate(head_b);
@@ -472,13 +594,13 @@ void	from_downab(int *t, t_list *head_a, t_list *head_b)
 		t[NBA]--;
 		t[NBB]--;
 	}
-	while (t[NBA] != 0)
+	while (t[NBA] > 0)
 	{
 		reverse_rotate(head_a);
 		printf("rra\n");
 		t[NBA]--;
 	}
-	while (t[NBB] != 0)
+	while (t[NBB] > 0)
 	{
 		reverse_rotate(head_b);
 		printf("rrb\n");
@@ -503,25 +625,23 @@ void	actions(int *t, t_list *head_a, t_list *head_b)
 
 void	initialiser(int *t)
 {
-	t[MINA] = maxim;
-	t[MAXA] = maxim;
 	t[NBRINSA] = 0;
 	t[NBRINSB] = 0;
 	t[NBRINSAB] = 0;
-	t[LENA] = maxim;
-	t[LENB] = maxim;
-	t[NBA] = maxim;
-	t[NBB] = maxim;
+	t[LENA] = 0;
+	t[LENB] = 0;
+	t[NBA] = 0;
+	t[NBB] = 0;
 	t[NBAB] = maxim;
 	t[FROMUPA] = 1;
 	t[FROMUPB] = 1;
-	t[UPA] = maxim;
-	t[UPB] = maxim;
+	t[UPA] = 0;
+	t[UPB] = 0;
 }
 
 void	push_to_a(t_list *head_a, t_list *head_b)
 {
-	t_stack	*a;
+	//t_stack	*a;
 	t_stack	*b;
 	int		t[14];
 
@@ -529,50 +649,31 @@ void	push_to_a(t_list *head_a, t_list *head_b)
 	while (head_b->header != NULL)
 	{
 		b = head_b->header;
-		a = head_a->header;
 		initialiser(t);
-		while (b)
-		{
-			size(head_a,head_b, t);
-			a = head_a->header;
-			best_pos_a(t, a, b);
-			number_of_instructions(t);
-			t[FROMUPB] = 1;
-			t[NBRINSB]++;
-			b = b->suivant;
-		}
-		// printf("FROMUPB-%d \t FROMUPA-%d\t NBRINSA-%d\t NBRINSB-%d\t NBRINSAB-%d\n",t[FROMUPB],t[FROMUPA],t[NBRINSA],t[NBRINSB],t[NBRINSB]);
-		// printf("UPB-%d \t UPA-%d\t NBA-%d\t NBB-%d\t NBAB-%d\n",t[UPB],t[UPA],t[NBA],t[NBB],t[NBAB]);
-		// b = head_b->header;
-		// a = head_a->header;
-		// while (a)
+		size(head_a, head_b, t);
+		find_element(t, head_a, b);
+		// printf("%d  %d  %d  %d %d\n", t[UPA], t[UPB], t[NBA], t[NBB], t[NBAB]);
+		// while(a)
 		// {
-		// 	printf("|a|--%d\n",a->index);
-		// 	a = a->suivant;
+		// 	printf("%d\n", a->index);
+		// 	 a = a->suivant;
 		// }
-		// while (b)
-		// {
-		// 	printf("|b|--%d\n",b->index);
-		// 	b = b->suivant;
-		// }
-		// b = head_b->header;
 		actions(t, head_a, head_b);
-		a = head_a->header;
-		printf("%d\n", a->index);
 	}
+	//a = head_a->header;
 	//free(t);
 }
 
 void	push_to_b(t_list *head_a, t_list *head_b)
 {
 	t_stack *a;
-	t_stack *b;
+	//t_stack *b;
 	int k = 0;
 
 	while (ft_checker(head_a) != 1)
 	{
 		a = head_a->header;
-		b = head_b->header;
+		//b = head_b->header;
 		if (a->index < k + 12 && a->index >= k)
 		{
 			k = a->index;
@@ -600,6 +701,50 @@ void	push_to_b(t_list *head_a, t_list *head_b)
 	}*/
 }
 
+void	ft_rotate_a(t_list *head, int i, int fromdown)
+{
+	if (fromdown == 1)
+	{
+		while (i > 0)
+		{
+			reverse_rotate(head);
+			printf("rra\n");
+			i--;
+		}
+	}
+	else
+	{
+		while (i > 0)
+		{
+			rotate(head);
+			printf("ra\n");
+			i--;
+		}
+	}
+}
+
+void	last_actions(t_list *head, int size_a)
+{
+	t_stack *a;
+	int		i;
+	int		fromdown;
+
+	a = head->header;
+	fromdown = 0;
+	i = 0;
+	while (a->index > 0)
+	{
+		i++;
+		a = a->suivant;
+	}
+	if (i > (size_a / 2))
+	{
+		fromdown = 1;
+		i = size_a - i;
+	}
+	ft_rotate_a(head, i, fromdown);
+}
+
 void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
 {
 	int *t;
@@ -625,6 +770,8 @@ void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
 	}
 	push_to_b(head_a, head_b);
 	push_to_a(head_a, head_b);
+	if (ft_check(head_a))
+		last_actions(head_a, size_a);
 	// a = head_a->header;
 	// while (a != NULL)
 	// {
@@ -638,11 +785,11 @@ void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
 void	ft_sort(t_list *head_a, t_list *head_b)
 {
 	t_stack *a;
-	t_stack *b;
+	// t_stack *b;
 	int		i = 1;
 
 	a = head_a->header;
-	b = head_b->header;
+	// b = head_b->header;
 	while (a->suivant != NULL)
 	{
 		i++;
@@ -665,26 +812,12 @@ void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 		ft_sort(head, head_b);
 }
 
-int	ft_check(t_list *head)
-{
-	t_stack	*to_check;
-
-	to_check = head->header;
-	while (to_check->suivant != NULL)
-	{
-		if (to_check->value > to_check->suivant->value)
-			return (1);
-		to_check = to_check->suivant;
-	}
-	return (0);
-}
-
 int main(int ac, char **av)
 {
 	t_list *header;
 	t_list *header_b;
-	t_stack *a;
-	t_stack *b;
+	//t_stack *a;
+	//t_stack *b;
 	int		i;
 
 	i = ac;
@@ -708,7 +841,7 @@ int main(int ac, char **av)
 		// a = header->header;
 		// while (a != NULL)
 		// {
-		// 	printf("%d\n",a->value);
+		// 	printf("%d\n",a->index);
 		// 	a = a->suivant;
 		// }
 		ft_free(header);
