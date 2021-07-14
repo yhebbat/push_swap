@@ -27,24 +27,42 @@ int	ft_check(t_list *head)
 	return (0);
 }
 
+void	ft_helperthree(t_list *head, t_stack *a)
+{
+	if (a->value < a->suivant->suivant->value)
+	{
+		swap(head);
+		printf("sa\n");
+	}
+	else
+	{
+		rotate(head);
+		printf("ra\n");
+	}
+}
+
+void	ft_helpertthree(t_list *head, t_stack *a)
+{
+	if (a->value < a->suivant->suivant->value)
+	{
+		swap(head);
+		rotate(head);
+		printf("sa\nra\n");
+	}
+	else
+	{
+		reverse_rotate(head);
+		printf("rra\n");
+	}
+}
+
 void	ft_sorttt(t_list *head)
 {
 	t_stack *a;
 	
 	a = head->header;
 	if (a->value > a->suivant->value && a->suivant->value < a->suivant->suivant->value)
-	{
-		if (a->value < a->suivant->suivant->value)
-		{
-			swap(head);
-			printf("sa\n");
-		}
-		else
-		{
-			rotate(head);
-			printf("ra\n");
-		}
-	}
+		ft_helperthree(head, a);
 	else if (a->value > a->suivant->value && a->suivant->value > a->suivant->suivant->value)
 	{
 		swap(head);
@@ -52,22 +70,10 @@ void	ft_sorttt(t_list *head)
 		printf("sa\nrra\n");
 	}
 	else if (a->value < a->suivant->value && a->suivant->value > a->suivant->suivant->value)
-	{
-		if (a->value < a->suivant->suivant->value)
-		{
-			swap(head);
-			rotate(head);
-			printf("sa\nra\n");
-		}
-		else
-		{
-			reverse_rotate(head);
-			printf("rra\n");
-		}
-	}
+		ft_helpertthree(head, a);
 }
 
-void	ft_sortttt(t_list *head, t_list *head_b)
+int		find_min(t_list *head)
 {
 	t_stack *a;
 	int tmp;
@@ -90,6 +96,14 @@ void	ft_sortttt(t_list *head, t_list *head_b)
 		i++;
 		a = a->suivant;
 	}
+	return (i);
+}
+
+void	ft_sortttt(t_list *head, t_list *head_b)
+{
+	int i;
+
+	i = find_min(head);
 	if (i == 1)
 	{
 		swap(head);
@@ -114,29 +128,8 @@ void	ft_sortttt(t_list *head, t_list *head_b)
 	printf("pa\n");
 }
 
-void	ft_sort5(t_list *head, t_list *head_b)
+void	helperfive(t_list *head, int i)
 {
-	t_stack *a;
-	int tmp;
-	int i;
-
-	i = 0;
-	a = head->header;
-	tmp = a->value;
-	while (a->suivant != NULL)
-	{
-		if (tmp > a->suivant->value)
-			tmp = a->suivant->value;
-		a = a->suivant;
-	}
-	a = head->header;
-	while (a->suivant != NULL)
-	{
-		if (a->value == tmp)
-			break;
-		i++;
-		a = a->suivant;
-	}
 	if (i == 1)
 	{
 		swap(head);
@@ -161,6 +154,13 @@ void	ft_sort5(t_list *head, t_list *head_b)
 		reverse_rotate(head);
 		printf("rra\n");
 	}
+}
+void	ft_sort5(t_list *head, t_list *head_b)
+{
+	int i;
+
+	i = find_min(head);
+	helperfive(head, i);
 	push(head_b, head);
 	printf("pb\n");
 	ft_sortttt(head, head_b);
@@ -617,7 +617,6 @@ void	ft_sort(t_list *head_a, t_list *head_b)
 
 void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 {
-	(void)ac;
 	if (ac == 3)
 		ft_sortt(head);
 	else if (ac == 4)
