@@ -144,7 +144,7 @@ void	ft_sort5(t_list *head, t_list *head_b)
 	}
 	else if (i == 2)
 	{
-		reverse_rotate(head);
+		rotate(head);
 		printf("ra\n");
 		swap(head);
 		printf("sa\n");
