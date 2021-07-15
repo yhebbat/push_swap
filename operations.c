@@ -27,10 +27,8 @@ void	swap(t_list *head)
 
 void	push(t_list *dest, t_list *depart)
 {
-	//t_stack *des;
 	t_stack *dep;
 
-	//des = dest->header;
 	dep = depart->header;
 	if (dep != NULL)
 	{

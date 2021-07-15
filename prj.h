@@ -65,3 +65,77 @@ void	ft_free(t_list *head);
 
 void ft_depiler2(t_stack **a);
 //static void	ft_putstr(char *c);
+
+void	ft_putstr(char *c);
+void	ft_exit();
+void	ft_compare1(t_list *head_a, t_list *head_b, char *line);
+void	ft_compare2(t_list *head_a, t_list *head_b, char *line);
+void	ft_compare3(t_list *head_a, t_list *head_b, char *line);
+void	ft_command(t_list *head_a, t_list *head_b, char *line);
+void	ft_get(t_list *header_a, t_list *header_b);
+void	ft_free(t_list *head);
+
+void	ft_sorted(int max, t_list *head, int *t);
+void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a);
+
+void	ft_sortt(t_list *head);
+
+void	ft_helperthree(t_list *head, t_stack *a);
+
+void	ft_helpertthree(t_list *head, t_stack *a);
+
+void	ft_sorttt(t_list *head);
+
+void	ft_sortttt(t_list *head, t_list *head_b);
+
+void	helperfive(t_list *head, int i);
+
+void	ft_sort5(t_list *head, t_list *head_b);
+
+void	fromlinkedlist_to_table(t_stack *a, int *t, int max);
+
+void	ft_sorted(int max, t_list *head, int *t);
+
+void		size(t_list *head_a, t_list *head_b, int *t);
+
+void	min_instructions(int *t, int nb);
+
+void	number_of_instructions(int *t, int v, int nb);
+
+void	ft_min(int *t, t_stack *a);
+
+void	ft_max(int *t, t_stack *a, int *v);
+
+void	ft_mid(int *t, t_stack *a, t_stack *b);
+
+void	find_element(int *t, t_list *head_a, t_stack *b);
+
+void	from_upa(int *t, t_list *head_a, t_list *head_b);
+
+void	from_upb(int *t, t_list *head_a, t_list *head_b);
+
+void	from_upab(int *t, t_list *head_a, t_list *head_b);
+
+void	from_downab(int *t, t_list *head_a, t_list *head_b);
+
+void	actions(int *t, t_list *head_a, t_list *head_b);
+
+void	initialiser(int *t);
+
+void	push_to_a(t_list *head_a, t_list *head_b);
+
+void	push_to_b(t_list *head_a, t_list *head_b);
+
+void	ft_rotate_a(t_list *head, int i, int fromdown);
+
+void	last_actions(t_list *head, int size_a);
+
+void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a);
+
+void	ft_sort(t_list *head_a, t_list *head_b);
+
+void	ft_pushswap(t_list *head, t_list *head_b, int ac);
+
+void	fill_a(t_list *header, int ac, char **av);
+
+int		find_min(t_list *head);

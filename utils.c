@@ -1,6 +1,6 @@
 #include "prj.h"
 
-static void	ft_putstr(char *c)
+void	ft_putstr(char *c)
 {
 	int	i;
 
@@ -9,7 +9,7 @@ static void	ft_putstr(char *c)
 		write(1, &c[i++], 1);
 }
 
-void	ft_exit(void)
+void	ft_exit()
 {
 	ft_putstr("Error\n");
 	exit(0);
@@ -79,15 +79,16 @@ void	ft_command(t_list *head_a, t_list *head_b, char *line)
 void	ft_get(t_list *header_a, t_list *header_b)
 {
 	char	*line;
+	int 	res;
 
-	while (get_next_line(0, &line))
+	while ((res = get_next_line(0, &line)) > 0)
 	{
-		if (strcmp(line, "") == 0)
-			break ;
 		ft_command(header_a, header_b, line);
 		free(line);
 	}
 	free(line);
+	if (res == -1)
+		ft_exit();
 }
 
 void	ft_free(t_list *head)

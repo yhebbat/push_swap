@@ -101,6 +101,10 @@ int		get_next_line(int fd, char **line)
 	{
 		return (remplir_line(line, &str, len));
 	}
+	// else if(str[len] != '\n')
+	// {
+	// 	return (-1);
+	// }
 	else if (str[len] == '\0')
 		return (remplir_fin(line, &str));
 	return (0);

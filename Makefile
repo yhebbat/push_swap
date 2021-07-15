@@ -1,7 +1,7 @@
 NAME = push_swap
 NAME_BONUS = checker
 
-SRC =	push_swap.c get_next_line.c get_next_line_utils.c pile.c operations.c to_check.c utils.c
+SRC =	push_swap.c get_next_line.c get_next_line_utils.c pile.c operations.c to_check.c utils.c big_sort.c move_to_b.c move_to_a.c move_to_a_helper.c small_inst.c mini_sort.c mini_sort_helper.c
 SRC_BONUS =	checker.c get_next_line.c get_next_line_utils.c pile.c operations.c to_check.c utils.c
 OBJECT = $(SRC:.c=.o)
 OBJECT_BONUS = $(SRC_BONUS:.c=.o)

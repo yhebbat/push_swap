@@ -1,17 +1,17 @@
 #include "prj.h"
 
 
-void	ft_sortt(t_list *head)
-{
-	t_stack *a;
+// void	ft_sortt(t_list *head)
+// {
+// 	t_stack *a;
 
-	a = head->header;
-	if (a->value > a->suivant->value)
-	{
-		swap(head);
-		printf("sa\n");
-	}
-}
+// 	a = head->header;
+// 	if (a->value > a->suivant->value)
+// 	{
+// 		swap(head);
+// 		ft_putstr("sa\n");
+// 	}
+// }
 
 int	ft_check(t_list *head)
 {
@@ -27,361 +27,357 @@ int	ft_check(t_list *head)
 	return (0);
 }
 
-void	ft_sorttt(t_list *head)
-{
-	t_stack *a;
+// void	ft_helperthree(t_list *head, t_stack *a)
+// {
+// 	if (a->value < a->suivant->suivant->value)
+// 	{
+// 		swap(head);
+// 		ft_putstr("sa\n");
+// 	}
+// 	else
+// 	{
+// 		rotate(head);
+// 		ft_putstr("ra\n");
+// 	}
+// }
+
+// void	ft_helpertthree(t_list *head, t_stack *a)
+// {
+// 	if (a->value < a->suivant->suivant->value)
+// 	{
+// 		swap(head);
+// 		rotate(head);
+// 		ft_putstr("sa\nra\n");
+// 	}
+// 	else
+// 	{
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 	}
+// }
+
+// void	ft_sorttt(t_list *head)
+// {
+// 	t_stack *a;
 	
-	a = head->header;
-	if (a->value > a->suivant->value && a->suivant->value < a->suivant->suivant->value)
-	{
-		if (a->value < a->suivant->suivant->value)
-		{
-			swap(head);
-			printf("sa\n");
-		}
-		else
-		{
-			rotate(head);
-			printf("ra\n");
-		}
-	}
-	else if (a->value > a->suivant->value && a->suivant->value > a->suivant->suivant->value)
-	{
-		swap(head);
-		reverse_rotate(head);
-		printf("sa\nrra\n");
-	}
-	else if (a->value < a->suivant->value && a->suivant->value > a->suivant->suivant->value)
-	{
-		if (a->value < a->suivant->suivant->value)
-		{
-			swap(head);
-			rotate(head);
-			printf("sa\nra\n");
-		}
-		else
-		{
-			reverse_rotate(head);
-			printf("rra\n");
-		}
-	}
-}
+// 	a = head->header;
+// 	if (a->value > a->suivant->value && a->suivant->value < a->suivant->suivant->value)
+// 		ft_helperthree(head, a);
+// 	else if (a->value > a->suivant->value && a->suivant->value > a->suivant->suivant->value)
+// 	{
+// 		swap(head);
+// 		reverse_rotate(head);
+// 		ft_putstr("sa\nrra\n");
+// 	}
+// 	else if (a->value < a->suivant->value && a->suivant->value > a->suivant->suivant->value)
+// 		ft_helpertthree(head, a);
+// }
 
-void	ft_sortttt(t_list *head, t_list *head_b)
-{
-	t_stack *a;
-	int tmp;
-	int i;
+// int		find_min(t_list *head)
+// {
+// 	t_stack *a;
+// 	int tmp;
+// 	int i;
 
-	i = 0;
-	a = head->header;
-	tmp = a->value;
-	while (a->suivant != NULL)
-	{
-		if (tmp > a->suivant->value)
-			tmp = a->suivant->value;
-		a = a->suivant;
-	}
-	a = head->header;
-	while (a->suivant != NULL)
-	{
-		if (a->value == tmp)
-			break;
-		i++;
-		a = a->suivant;
-	}
-	if (i == 1)
-	{
-		swap(head);
-		printf("sa\n");
-	}
-	else if (i == 2)
-	{
-		reverse_rotate(head);
-		printf("rra\n");
-		reverse_rotate(head);
-		printf("rra\n");
-	}
-	else if (i == 3)
-	{
-		reverse_rotate(head);
-		printf("rra\n");
-	}
-	push(head_b, head);
-	printf("pb\n");
-	ft_sorttt(head);
-	push(head, head_b);
-	printf("pa\n");
-}
+// 	i = 0;
+// 	a = head->header;
+// 	tmp = a->value;
+// 	while (a->suivant != NULL)
+// 	{
+// 		if (tmp > a->suivant->value)
+// 			tmp = a->suivant->value;
+// 		a = a->suivant;
+// 	}
+// 	a = head->header;
+// 	while (a->suivant != NULL)
+// 	{
+// 		if (a->value == tmp)
+// 			break;
+// 		i++;
+// 		a = a->suivant;
+// 	}
+// 	return (i);
+// }
 
-void	ft_sort5(t_list *head, t_list *head_b)
-{
-	t_stack *a;
-	int tmp;
-	int i;
+// void	ft_sortttt(t_list *head, t_list *head_b)
+// {
+// 	int i;
 
-	i = 0;
-	a = head->header;
-	tmp = a->value;
-	while (a->suivant != NULL)
-	{
-		if (tmp > a->suivant->value)
-			tmp = a->suivant->value;
-		a = a->suivant;
-	}
-	a = head->header;
-	while (a->suivant != NULL)
-	{
-		if (a->value == tmp)
-			break;
-		i++;
-		a = a->suivant;
-	}
-	if (i == 1)
-	{
-		swap(head);
-		printf("sa\n");
-	}
-	else if (i == 2)
-	{
-		rotate(head);
-		printf("ra\n");
-		swap(head);
-		printf("sa\n");
-	}
-	else if (i == 3)
-	{
-		reverse_rotate(head);
-		printf("rra\n");
-		reverse_rotate(head);
-		printf("rra\n");
-	}
-	else if (i == 4)
-	{
-		reverse_rotate(head);
-		printf("rra\n");
-	}
-	push(head_b, head);
-	printf("pb\n");
-	ft_sortttt(head, head_b);
-	push(head, head_b);
-	printf("pa\n");
-}
+// 	i = find_min(head);
+// 	if (i == 1)
+// 	{
+// 		swap(head);
+// 		ft_putstr("sa\n");
+// 	}
+// 	else if (i == 2)
+// 	{
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 	}
+// 	else if (i == 3)
+// 	{
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 	}
+// 	push(head_b, head);
+// 	ft_putstr("pb\n");
+// 	ft_sorttt(head);
+// 	push(head, head_b);
+// 	ft_putstr("pa\n");
+// }
 
-void	fromlinkedlist_to_table(t_stack *a, int *t, int max)
-{
-	int i;
+// void	helperfive(t_list *head, int i)
+// {
+// 	if (i == 1)
+// 	{
+// 		swap(head);
+// 		ft_putstr("sa\n");
+// 	}
+// 	else if (i == 2)
+// 	{
+// 		rotate(head);
+// 		ft_putstr("ra\n");
+// 		swap(head);
+// 		ft_putstr("sa\n");
+// 	}
+// 	else if (i == 3)
+// 	{
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 	}
+// 	else if (i == 4)
+// 	{
+// 		reverse_rotate(head);
+// 		ft_putstr("rra\n");
+// 	}
+// }
 
-	i = 0;
-	while (i < max)
-	{
-		t[i] = a->value;
-		a = a->suivant;
-		i++;
-	}
-}
+// void	ft_sort5(t_list *head, t_list *head_b)
+// {
+// 	int i;
 
-void	ft_sorted(int max, t_list *head, int *t)
-{
-	int i;
-	int k;
-	int tmp;
-	t_stack *a;
+// 	i = find_min(head);
+// 	helperfive(head, i);
+// 	push(head_b, head);
+// 	ft_putstr("pb\n");
+// 	ft_sortttt(head, head_b);
+// 	push(head, head_b);
+// 	ft_putstr("pa\n");
+// }
 
-	i = 0;
-	a = head->header;
-	fromlinkedlist_to_table(a,t,max);
-	while (i < max)
-	{
-		k = 0;
-		while (k < max - i - 1)
-		{
-			if (t[k] > t[k + 1])
-			{
-				tmp = t[k];
-				t[k] = t[k + 1];
-				t[k + 1] = tmp;
-			}
-			k++;
-		}
-		i++;
-	}
-}
-/*
-int		find_the_first_num(t_list *head_a, int min, int max)
-{
-	t_stack *a_top;
-	t_stack *a_bot;
-	int i;
-	int k;
+// void	fromlinkedlist_to_table(t_stack *a, int *t, int max)
+// {
+// 	int i;
 
-	i = 0;
-	k = 0;
-	a_top = head_a->header;
-	a_bot = head_a->footer;
-	while (a_top != NULL)
-	{
-		i++;
-		if (a_top->value >= min && a_top->value <= max)
-			break;
-		a_top = a_top->suivant;
-	}
-	while (a_bot != NULL)
-	{
-		k++;
-		if (a_bot->value >= min && a_bot->value <= max)
-			break;
-		a_bot = a_bot->preced;
-	}
-	if (k < i)
-		return (1);
-	else
-		return (0);
-}
-*/
-void		size(t_list *head_a, t_list *head_b, int *t)
-{
-	t_stack *a;
-	t_stack *b;
+// 	i = 0;
+// 	while (i < max)
+// 	{
+// 		t[i] = a->value;
+// 		a = a->suivant;
+// 		i++;
+// 	}
+// }
 
-	a = head_a->header;
-	b = head_b->header;
-	t[MINA] = a->index;
-	t[MAXA] = a->index;
-	t[LENA] = 0;
-	t[LENB] = 0;
-	while (a)
-	{
-		if (a->index < t[MINA])
-			t[MINA] = a->index;
-		else if (a->index > t[MAXA])
-			t[MAXA] = a->index;
-		t[LENA]++;
-		a = a->suivant;
-	}
-	while (b)
-	{
-		t[LENB]++;
-		b = b->suivant;
-	}
-}
+// void	ft_sorted(int max, t_list *head, int *t)
+// {
+// 	int i;
+// 	int k;
+// 	int tmp;
+// 	t_stack *a;
 
-void	min_instructions(int *t, int nb)
-{
-	t[UPA] = t[FROMUPA];
-	t[UPB] = t[FROMUPB];
-	t[NBA] = t[NBRINSA];
-	t[NBB] = nb;
-	t[NBAB] = t[NBRINSAB];
-}
+// 	i = 0;
+// 	a = head->header;
+// 	fromlinkedlist_to_table(a,t,max);
+// 	while (i < max)
+// 	{
+// 		k = 0;
+// 		while (k < max - i - 1)
+// 		{
+// 			if (t[k] > t[k + 1])
+// 			{
+// 				tmp = t[k];
+// 				t[k] = t[k + 1];
+// 				t[k + 1] = tmp;
+// 			}
+// 			k++;
+// 		}
+// 		i++;
+// 	}
+// }
 
-void	number_of_instructions(int *t, int v, int nb)
-{
-	if (t[NBRINSA] > (t[LENA] / 2))
-	{
-		t[FROMUPA] = 0;
-		t[NBRINSA] = t[LENA] - t[NBRINSA];
-	}
-	if (nb > (t[LENB] / 2))
-	{	
-		t[FROMUPB] = 0;
-		nb = t[LENB] - nb;
-	}
-	t[NBRINSA] += v;
-	if (t[FROMUPB] == t[FROMUPA])
-	{
-	 	if(t[NBRINSA] > nb)
-	 		t[NBRINSAB] = t[NBRINSA];
-	 	else
-	 		t[NBRINSAB] = nb;
-	 }
-	else
-		t[NBRINSAB] = t[NBRINSA] + nb;
-	if (t[NBAB] > t[NBRINSAB])
-		min_instructions(t, nb);
-}
+// void		size(t_list *head_a, t_list *head_b, int *t)
+// {
+// 	t_stack *a;
+// 	t_stack *b;
 
-void	ft_min(int *t, t_stack *a)
-{
-	t[FROMUPA] = 1;
-	while (a->index != t[MINA])
-	{
-		t[NBRINSA]++;
-		a = a->suivant;
-	}
-}
+// 	a = head_a->header;
+// 	b = head_b->header;
+// 	t[MINA] = a->index;
+// 	t[MAXA] = a->index;
+// 	t[LENA] = 0;
+// 	t[LENB] = 0;
+// 	while (a)
+// 	{
+// 		if (a->index < t[MINA])
+// 			t[MINA] = a->index;
+// 		else if (a->index > t[MAXA])
+// 			t[MAXA] = a->index;
+// 		t[LENA]++;
+// 		a = a->suivant;
+// 	}
+// 	while (b)
+// 	{
+// 		t[LENB]++;
+// 		b = b->suivant;
+// 	}
+// }
 
-void	ft_max(int *t, t_stack *a, int *v)
-{
-	t[FROMUPA] = 1;
-	while (a->index != t[MAXA])
-	{
-		t[NBRINSA]++;
-		a = a->suivant;
-	}
-	if (t[NBRINSA] > (t[LENA] / 2))
-		*v = -1;
-	else
-		*v = 1;
-}
+// void	min_instructions(int *t, int nb)
+// {
+// 	t[UPA] = t[FROMUPA];
+// 	t[UPB] = t[FROMUPB];
+// 	t[NBA] = t[NBRINSA];
+// 	t[NBB] = nb;
+// 	t[NBAB] = t[NBRINSAB];
+// }
 
-void	ft_mid(int *t, t_stack *a, t_stack *b)
-{
-	t[NBRINSA] = 1;
-	t[FROMUPA] = 1;
-	while (a->suivant && !(b->index < a->suivant->index && b->index > a->index))
-	{
-		t[NBRINSA]++;
-		a = a->suivant;
-	}
-	if (a->suivant == NULL)
-	{
-		t[NBRINSA] = 0;
-	}
-}
+// void	number_of_instructions(int *t, int v, int nb)
+// {
+// 	if (t[NBRINSA] > (t[LENA] / 2))
+// 	{
+// 		t[FROMUPA] = 0;
+// 		t[NBRINSA] = t[LENA] - t[NBRINSA];
+// 	}
+// 	if (nb > (t[LENB] / 2))
+// 	{	
+// 		t[FROMUPB] = 0;
+// 		nb = t[LENB] - nb;
+// 	}
+// 	t[NBRINSA] += v;
+// 	if (t[FROMUPB] == t[FROMUPA])
+// 	{
+// 	 	if(t[NBRINSA] > nb)
+// 	 		t[NBRINSAB] = t[NBRINSA];
+// 	 	else
+// 	 		t[NBRINSAB] = nb;
+// 	 }
+// 	else
+// 		t[NBRINSAB] = t[NBRINSA] + nb;
+// 	if (t[NBAB] > t[NBRINSAB])
+// 		min_instructions(t, nb);
+// }
 
-void	find_element(int *t, t_list *head_a, t_stack *b)
-{
-	int		v;
-	int		nb;
-	t_stack *a;
+// void	ft_min(int *t, t_stack *a)
+// {
+// 	t[FROMUPA] = 1;
+// 	while (a->index != t[MINA])
+// 	{
+// 		t[NBRINSA]++;
+// 		a = a->suivant;
+// 	}
+// }
 
-	nb = 0;
-	while (b)
-	{
-		a = head_a->header;
-		t[FROMUPB] = 1;
-		v = 0;
-		t[NBRINSA] = 0;
-		if (b->index < t[MINA])
-			ft_min(t, a);
-		else if(b->index > t[MAXA])
-			ft_max(t,a,&v);
-		else
-			ft_mid(t, a, b);
-		number_of_instructions(t, v, nb);
-		b = b->suivant;
-		nb++;
-	}
-}
+// void	ft_max(int *t, t_stack *a, int *v)
+// {
+// 	t[FROMUPA] = 1;
+// 	while (a->index != t[MAXA])
+// 	{
+// 		t[NBRINSA]++;
+// 		a = a->suivant;
+// 	}
+// 	if (t[NBRINSA] > (t[LENA] / 2))
+// 		*v = -1;
+// 	else
+// 		*v = 1;
+// }
 
+// void	ft_mid(int *t, t_stack *a, t_stack *b)
+// {
+// 	t[NBRINSA] = 1;
+// 	t[FROMUPA] = 1;
+// 	while (a->suivant && !(b->index < a->suivant->index && b->index > a->index))
+// 	{
+// 		t[NBRINSA]++;
+// 		a = a->suivant;
+// 	}
+// 	if (a->suivant == NULL)
+// 	{
+// 		t[NBRINSA] = 0;
+// 	}
+// }
 
+// void	find_element(int *t, t_list *head_a, t_stack *b)
+// {
+// 	int		v;
+// 	int		nb;
+// 	t_stack *a;
+
+// 	nb = 0;
+// 	while (b)
+// 	{
+// 		a = head_a->header;
+// 		t[FROMUPB] = 1;
+// 		v = 0;
+// 		t[NBRINSA] = 0;
+// 		if (b->index < t[MINA])
+// 			ft_min(t, a);
+// 		else if(b->index > t[MAXA])
+// 			ft_max(t,a,&v);
+// 		else
+// 			ft_mid(t, a, b);
+// 		number_of_instructions(t, v, nb);
+// 		b = b->suivant;
+// 		nb++;
+// 	}
+// }
+
+// void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
+// {
+// 	int *t;
+// 	int k;
+// 	t_stack *a;
+	
+// 	t = malloc(sizeof(int) * size_a);
+// 	ft_sorted(size_a, head_a, t);
+// 	k = 0;
+// 	while (k < size_a)
+// 	{
+// 		a = head_a->header;
+// 		while (a != NULL)
+// 		{
+// 			if (t[k] == a->value)
+// 			{
+// 				a->index = k;
+// 				break ;
+// 			}
+// 			a = a->suivant;
+// 		}
+// 		k++;
+// 	}
+// 	push_to_b(head_a, head_b);
+// 	push_to_a(head_a, head_b);
+// 	free(t);
+// }
 void	from_upa(int *t, t_list *head_a, t_list *head_b)
 {
 	while (t[NBA] > 0)
 	{
 		rotate(head_a);
-		printf("ra\n");
+		ft_putstr("ra\n");
 		t[NBA]--;
 	}
 	while (t[NBB] > 0)
 	{	
 		reverse_rotate(head_b);
-		printf("rrb\n");
+		ft_putstr("rrb\n");
 		t[NBB]--;
 	}
 	push(head_a, head_b);
-	printf("pa\n");
+	ft_putstr("pa\n");
 }
 
 void	from_upb(int *t, t_list *head_a, t_list *head_b)
@@ -389,17 +385,17 @@ void	from_upb(int *t, t_list *head_a, t_list *head_b)
 	while (t[NBA] > 0)
 	{
 		reverse_rotate(head_a);
-		printf("rra\n");
+		ft_putstr("rra\n");
 		t[NBA]--;
 	}
 	while (t[NBB] > 0)
 	{
 		rotate(head_b);
-		printf("rb\n");
+		ft_putstr("rb\n");
 		t[NBB]--;
 	}
 	push(head_a, head_b);
-	printf("pa\n");
+	ft_putstr("pa\n");
 }
 
 void	from_upab(int *t, t_list *head_a, t_list *head_b)
@@ -408,24 +404,24 @@ void	from_upab(int *t, t_list *head_a, t_list *head_b)
 	{
 		rotate(head_a);
 		rotate(head_b);
-		printf("rr\n");
+		ft_putstr("rr\n");
 		t[NBA]--;
 		t[NBB]--;
 	}
 	while (t[NBA] > 0)
 	{
 		rotate(head_a);
-		printf("ra\n");
+		ft_putstr("ra\n");
 		t[NBA]--;
 	}
 	while (t[NBB] > 0)
 	{
 		rotate(head_b);
-		printf("rb\n");	
+		ft_putstr("rb\n");	
 		t[NBB]--;
 	}
 	push(head_a, head_b);
-	printf("pa\n");
+	ft_putstr("pa\n");
 }
 
 void	from_downab(int *t, t_list *head_a, t_list *head_b)
@@ -434,24 +430,24 @@ void	from_downab(int *t, t_list *head_a, t_list *head_b)
 	{
 		reverse_rotate(head_a);
 		reverse_rotate(head_b);
-		printf("rrr\n");
+		ft_putstr("rrr\n");
 		t[NBA]--;
 		t[NBB]--;
 	}
 	while (t[NBA] > 0)
 	{
 		reverse_rotate(head_a);
-		printf("rra\n");
+		ft_putstr("rra\n");
 		t[NBA]--;
 	}
 	while (t[NBB] > 0)
 	{
 		reverse_rotate(head_b);
-		printf("rrb\n");
+		ft_putstr("rrb\n");
 		t[NBB]--;
 	}
 	push(head_a, head_b);
-	printf("pa\n");
+	ft_putstr("pa\n");
 }
 
 void	actions(int *t, t_list *head_a, t_list *head_b)
@@ -482,42 +478,42 @@ void	initialiser(int *t)
 	t[UPB] = 0;
 }
 
-void	push_to_a(t_list *head_a, t_list *head_b)
-{
-	t_stack	*b;
-	int		t[14];
+// void	push_to_a(t_list *head_a, t_list *head_b)
+// {
+// 	t_stack	*b;
+// 	int		t[14];
 
-	while (head_b->header != NULL)
-	{
-		b = head_b->header;
-		initialiser(t);
-		size(head_a, head_b, t);
-		find_element(t, head_a, b);
-		actions(t, head_a, head_b);
-	}
-}
+// 	while (head_b->header != NULL)
+// 	{
+// 		b = head_b->header;
+// 		initialiser(t);
+// 		size(head_a, head_b, t);
+// 		find_element(t, head_a, b);
+// 		actions(t, head_a, head_b);
+// 	}
+// }
 
-void	push_to_b(t_list *head_a, t_list *head_b)
-{
-	t_stack *a;
-	int k = 0;
+// void	push_to_b(t_list *head_a, t_list *head_b)
+// {
+// 	t_stack *a;
+// 	int k = 0;
 
-	while (ft_checker(head_a) != 1)
-	{
-		a = head_a->header;
-		if (a->index < k + 12 && a->index >= k)
-		{
-			k = a->index;
-			rotate(head_a);
-			printf("ra\n");
-		}
-		else
-		{
-			push(head_b, head_a);	
-			printf("pb\n");
-		}
-	}
-}
+// 	while (ft_checker(head_a) != 1)
+// 	{
+// 		a = head_a->header;
+// 		if (a->index < k + 12 && a->index >= k)
+// 		{
+// 			k = a->index;
+// 			rotate(head_a);
+// 			ft_putstr("ra\n");
+// 		}
+// 		else
+// 		{
+// 			push(head_b, head_a);	
+// 			ft_putstr("pb\n");
+// 		}
+// 	}
+// }
 
 void	ft_rotate_a(t_list *head, int i, int fromdown)
 {
@@ -526,7 +522,7 @@ void	ft_rotate_a(t_list *head, int i, int fromdown)
 		while (i > 0)
 		{
 			reverse_rotate(head);
-			printf("rra\n");
+			ft_putstr("rra\n");
 			i--;
 		}
 	}
@@ -535,7 +531,7 @@ void	ft_rotate_a(t_list *head, int i, int fromdown)
 		while (i > 0)
 		{
 			rotate(head);
-			printf("ra\n");
+			ft_putstr("ra\n");
 			i--;
 		}
 	}
@@ -563,33 +559,33 @@ void	last_actions(t_list *head, int size_a)
 	ft_rotate_a(head, i, fromdown);
 }
 
-void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
-{
-	int *t;
-	int k;
-	t_stack *a;
+// void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
+// {
+// 	int *t;
+// 	int k;
+// 	t_stack *a;
 	
-	t = malloc(sizeof(int) * size_a);
-	ft_sorted(size_a, head_a, t);
-	k = 0;
-	while (k < size_a)
-	{
-		a = head_a->header;
-		while (a != NULL)
-		{
-			if (t[k] == a->value)
-			{
-				a->index = k;
-				break ;
-			}
-			a = a->suivant;
-		}
-		k++;
-	}
-	push_to_b(head_a, head_b);
-	push_to_a(head_a, head_b);
-	free(t);
-}
+// 	t = malloc(sizeof(int) * size_a);
+// 	ft_sorted(size_a, head_a, t);
+// 	k = 0;
+// 	while (k < size_a)
+// 	{
+// 		a = head_a->header;
+// 		while (a != NULL)
+// 		{
+// 			if (t[k] == a->value)
+// 			{
+// 				a->index = k;
+// 				break ;
+// 			}
+// 			a = a->suivant;
+// 		}
+// 		k++;
+// 	}
+// 	push_to_b(head_a, head_b);
+// 	push_to_a(head_a, head_b);
+// 	free(t);
+// }
 
 int		ft_lena(t_list *head_a)
 {
@@ -617,7 +613,6 @@ void	ft_sort(t_list *head_a, t_list *head_b)
 
 void	ft_pushswap(t_list *head, t_list *head_b, int ac)
 {
-	(void)ac;
 	if (ac == 3)
 		ft_sortt(head);
 	else if (ac == 4)
