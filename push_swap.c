@@ -6,7 +6,7 @@
 /*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 16:04:06 by yhebbat           #+#    #+#             */
-/*   Updated: 2021/07/16 18:24:45 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/16 18:56:44 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,4 @@ int	main(int ac, char **av)
 		ft_free(header_b);
 		exit(0);
 	}
-	else
-		ft_exit();
 }
