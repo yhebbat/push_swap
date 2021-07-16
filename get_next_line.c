@@ -6,7 +6,7 @@
 /*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:28:23 by yhebbat           #+#    #+#             */
-/*   Updated: 2021/07/16 18:04:15 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/16 18:24:07 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,7 @@ int	get_next_line(int fd, char **line)
 	if (str[len] == '\n')
 		return (remplir_line(line, &str, len));
 	else if (str[len] != '\n' && len > 0)
-	{
-		free(str);
 		return (-1);
-	}
 	else if (str[len] == '\0')
 		return (remplir_fin(line, &str));
 	return (0);

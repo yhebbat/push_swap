@@ -6,7 +6,7 @@
 /*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 16:04:06 by yhebbat           #+#    #+#             */
-/*   Updated: 2021/07/16 17:55:05 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/16 18:24:45 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	fill_a(t_list *header, int ac, char **av)
 	{
 		if (check_value(header, av[i - 1]))
 			ft_exit();
-			
 		else
 			ft_remplir(header, ft_atoi(av[i - 1]), -1);
 		i--;
@@ -85,7 +84,6 @@ int	main(int ac, char **av)
 			ft_pushswap(header, header_b, ac);
 		ft_free(header);
 		ft_free(header_b);
-		// system ("leaks push_swap");
 		exit(0);
 	}
 	else
