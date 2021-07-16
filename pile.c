@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pile.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:47 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 17:34:40 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
-void ft_depiler(t_list *head)
+void	ft_depiler(t_list *head)
 {
 	t_stack	*to_delete;
-	t_stack *a;
+	t_stack	*a;
 
 	if (head != NULL && head->header != NULL)
 	{
@@ -25,11 +37,10 @@ void ft_depiler(t_list *head)
 	}
 }
 
-
-void ft_remplir(t_list *head, int val, int index)
+void	ft_remplir(t_list *head, int val, int index)
 {
 	t_stack	*a;
-	t_stack *to_add;
+	t_stack	*to_add;
 
 	to_add = malloc(sizeof(t_stack));
 	if (!to_add)

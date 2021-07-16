@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:04:14 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 18:16:48 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	ft_compare1(t_list *head_a, t_list *head_b, char *line)
@@ -64,14 +76,20 @@ void	ft_command(t_list *head_a, t_list *head_b, char *line)
 void	ft_get(t_list *header_a, t_list *header_b)
 {
 	char	*line;
-	int 	res;
+	int		res;
 
-	while ((res = get_next_line(0, &line)) > 0)
+	res = get_next_line(0, &line);
+	while (res > 0)
 	{
 		ft_command(header_a, header_b, line);
 		free(line);
+		res = get_next_line(0, &line);
 	}
-	free(line);
 	if (res == -1)
 		ft_exit();
+	else
+	{
+		free(line);
+		line = NULL;
+	}
 }

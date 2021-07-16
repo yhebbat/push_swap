@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:49 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 16:44:02 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	swap(t_list *head)
@@ -7,9 +19,8 @@ void	swap(t_list *head)
 	t_stack	*lsd;
 
 	lsd = NULL;
-    if (head->header != NULL)
+	if (head->header != NULL)
 		lsd = head->header;
-
 	if (lsd->suivant != NULL)
 	{
 		tmp = lsd->value;
@@ -23,7 +34,7 @@ void	swap(t_list *head)
 
 void	push(t_list *dest, t_list *depart)
 {
-	t_stack *dep;
+	t_stack	*dep;
 
 	dep = depart->header;
 	if (dep != NULL)
@@ -41,13 +52,13 @@ int	ft_checker(t_list *head)
 	while (to_check->suivant != NULL)
 	{
 		if (to_check->value > to_check->suivant->value)
-			return(0);
+			return (0);
 		to_check = to_check->suivant;
 	}
 	return (1);
 }
 
-void rotate(t_list *tesla)
+void	rotate(t_list *tesla)
 {
 	t_stack	*me;
 	t_stack	*new;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   last_moves_a.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:29 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 17:21:26 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	ft_rotate_a(t_list *head, int i, int fromdown)
@@ -22,9 +34,9 @@ void	ft_rotate_a(t_list *head, int i, int fromdown)
 	}
 }
 
-void	last_actions(t_list *head, int size_a)
+void	last_actions(t_list	*head, int size_a)
 {
-	t_stack *a;
+	t_stack	*a;
 	int		i;
 	int		fromdown;
 

@@ -1,24 +1,35 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/16 16:02:13 by yhebbat           #+#    #+#              #
+#    Updated: 2021/07/16 18:02:19 by yhebbat          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
 NAME_BONUS = checker
 
-SRC =	push_swap.c get_next_line.c get_next_line_utils.c pile.c \
-		operations.c to_check.c utils.c big_sort.c move_to_b.c move_to_a.c \
-		move_to_a_helper.c small_inst.c initialize.c last_moves_a.c find_to_move.c \
-		mini_sort.c free.c mini_sort_helper.c
+SRC =	push_swap.c operations.c to_check.c pile.c get_next_line.c\
+		utils.c big_sort.c move_to_b.c move_to_a.c get_next_line_utils.c\
+		move_to_a_helper.c small_inst.c find_to_move.c \
+		mini_sort.c free.c mini_sort_helper.c initialize.c last_moves_a.c
 SRC_BONUS =	checker.c get_next_line.c get_next_line_utils.c pile.c \
 			operations.c to_check.c utils.c free.c
 OBJECT = $(SRC:.c=.o)
 OBJECT_BONUS = $(SRC_BONUS:.c=.o)
 
-
 all : $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror libft.a  $(SRC) -o $(NAME)
+	@gcc -Wall -Wextra -Werror  $(SRC) -o $(NAME)
 	@echo "✅✅✅"
 
 bonus:
-	@gcc -Wall -Wextra -Werror libft.a  $(SRC_BONUS) -o $(NAME_BONUS)
+	@gcc -Wall -Wextra -Werror $(SRC_BONUS) -o $(NAME_BONUS)
 	@echo "🎁🎁🎁"
 
 clean:

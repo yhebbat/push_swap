@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_to_move.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:16 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 16:06:29 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	ft_min(int *t, t_stack *a)
@@ -43,7 +55,7 @@ void	find_element(int *t, t_list *head_a, t_stack *b)
 {
 	int		v;
 	int		nb;
-	t_stack *a;
+	t_stack	*a;
 
 	nb = 0;
 	while (b)
@@ -54,8 +66,8 @@ void	find_element(int *t, t_list *head_a, t_stack *b)
 		t[NBRINSA] = 0;
 		if (b->index < t[MINA])
 			ft_min(t, a);
-		else if(b->index > t[MAXA])
-			ft_max(t,a,&v);
+		else if (b->index > t[MAXA])
+			ft_max(t, a, &v);
 		else
 			ft_mid(t, a, b);
 		number_of_instructions(t, v, nb);

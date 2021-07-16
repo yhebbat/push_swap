@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_sort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:36 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 16:40:04 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	ft_sortt(t_list *head)
 {
-	t_stack *a;
+	t_stack	*a;
 
 	a = head->header;
 	if (a->value > a->suivant->value)
@@ -14,27 +26,27 @@ void	ft_sortt(t_list *head)
 
 void	ft_sorttt(t_list *head)
 {
-	t_stack *a;
-	
+	t_stack	*a;
+
 	a = head->header;
-	if (a->value > a->suivant->value && 
-			a->suivant->value < a->suivant->suivant->value)
+	if (a->value > a->suivant->value
+		&& a->suivant->value < a->suivant->suivant->value)
 		ft_helperthree(head, a);
-	else if (a->value > a->suivant->value &&
-			a->suivant->value > a->suivant->suivant->value)
+	else if (a->value > a->suivant->value
+		&& a->suivant->value > a->suivant->suivant->value)
 	{
 		swap(head);
 		reverse_rotate(head);
 		ft_putstr("sa\nrra\n");
 	}
-	else if (a->value < a->suivant->value &&
-			a->suivant->value > a->suivant->suivant->value)
+	else if (a->value < a->suivant->value
+		&& a->suivant->value > a->suivant->suivant->value)
 		ft_helpertthree(head, a);
 }
 
 void	ft_sortttt(t_list *head, t_list *head_b)
 {
-	int i;
+	int	i;
 
 	i = find_min(head);
 	if (i == 1)
@@ -63,7 +75,7 @@ void	ft_sortttt(t_list *head, t_list *head_b)
 
 void	ft_sort5(t_list *head, t_list *head_b)
 {
-	int i;
+	int	i;
 
 	i = find_min(head);
 	helperfive(head, i);

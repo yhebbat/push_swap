@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhebbat <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:28:45 by yhebbat           #+#    #+#             */
-/*   Updated: 2019/11/15 11:51:56 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/16 17:33:18 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -32,7 +32,8 @@ char	*ft_strdup(const char *s)
 	k = 0;
 	while (s[k] != '\0')
 		k++;
-	if (!(new = (char *)malloc((k + 1) * sizeof(char))))
+	new = (char *)malloc((k + 1) * sizeof(char));
+	if (!(new))
 		return (0);
 	while (s[i] != '\0')
 	{
@@ -53,7 +54,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	if (start > ft_strlen(s))
 		len = 0;
-	if (!(str = malloc((len + 1) * sizeof(char))))
+	str = malloc((len + 1) * sizeof(char));
+	if (!(str))
 		return (0);
 	if (start < ft_strlen(s))
 	{
@@ -78,7 +80,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(str = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!(str))
 		return (NULL);
 	while (*s1)
 	{
@@ -94,4 +97,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	str;
+
+	str = (unsigned char)c;
+	i = 0;
+	while (s[i] != str)
+	{
+		if (s[i] == '\0')
+			return (0);
+		i++;
+	}
+	return ((char *)s + i);
 }

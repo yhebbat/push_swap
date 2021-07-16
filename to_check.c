@@ -1,28 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   to_check.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:04:11 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 17:36:45 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
-int			is_digit(char *str)
+int	is_digit(char *str)
 {
 	if (*(str + 1) != '\0' && (*str == '+' || *str == '-'))
 		str++;
 	while (*str)
 	{
-		if(*str < '0' || *str > '9')
+		if (*str < '0' || *str > '9')
 			return (1);
 		str++;
 	}
 	return (0);
 }
 
-int			check_duplicate(t_list *head, char *str)
+int	check_duplicate(t_list *head, char *str)
 {
-	t_stack *a;
+	t_stack	*a;
 
 	if (head->header != NULL)
 	{
 		a = head->header;
 		while (a != NULL)
 		{
-			if (a->value == atoi(str))
+			if (a->value == ft_atoi(str))
 				return (1);
 			a = a->suivant;
 		}
@@ -30,10 +42,10 @@ int			check_duplicate(t_list *head, char *str)
 	return (0);
 }
 
-long long		ft_overflowhelper(char *str)
+long long	ft_overflowhelper(char *str)
 {
 	long long	a;
-	long				sign;
+	long		sign;
 
 	a = 0;
 	sign = 1;
@@ -58,9 +70,9 @@ long long		ft_overflowhelper(char *str)
 	return (a * sign);
 }
 
-int			check_overflow(char *str)
+int	check_overflow(char *str)
 {
-	long long r;
+	long long	r;
 
 	r = ft_overflowhelper(str);
 	if (r > 2147483647 || r < -2147483648)

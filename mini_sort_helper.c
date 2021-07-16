@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_sort_helper.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:32 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 16:46:20 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	helperfive(t_list *head, int i)
@@ -28,11 +40,11 @@ void	helperfive(t_list *head, int i)
 	}
 }
 
-int		find_min(t_list *head)
+int	find_min(t_list *head)
 {
-	t_stack *a;
-	int tmp;
-	int i;
+	t_stack	*a;
+	int		tmp;
+	int		i;
 
 	i = 0;
 	a = head->header;
@@ -47,7 +59,7 @@ int		find_min(t_list *head)
 	while (a->suivant != NULL)
 	{
 		if (a->value == tmp)
-			break;
+			break ;
 		i++;
 		a = a->suivant;
 	}

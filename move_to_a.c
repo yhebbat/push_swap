@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_to_a.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:03:41 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 16:40:56 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	from_upa(int *t, t_list *head_a, t_list *head_b)
@@ -55,7 +67,7 @@ void	from_upab(int *t, t_list *head_a, t_list *head_b)
 	while (t[NBB] > 0)
 	{
 		rotate(head_b);
-		ft_putstr("rb\n");	
+		ft_putstr("rb\n");
 		t[NBB]--;
 	}
 	push(head_a, head_b);

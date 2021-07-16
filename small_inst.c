@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_inst.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/16 16:04:09 by yhebbat           #+#    #+#             */
+/*   Updated: 2021/07/16 16:42:26 by yhebbat          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prj.h"
 
 void	min_instructions(int *t, int nb)
@@ -24,11 +36,11 @@ void	number_of_instructions(int *t, int v, int nb)
 	t[NBRINSA] += v;
 	if (t[FROMUPB] == t[FROMUPA])
 	{
-	 	if(t[NBRINSA] > nb)
-	 		t[NBRINSAB] = t[NBRINSA];
-	 	else
-	 		t[NBRINSAB] = nb;
-	 }
+		if (t[NBRINSA] > nb)
+			t[NBRINSAB] = t[NBRINSA];
+		else
+			t[NBRINSAB] = nb;
+	}
 	else
 		t[NBRINSAB] = t[NBRINSA] + nb;
 	if (t[NBAB] > t[NBRINSAB])
