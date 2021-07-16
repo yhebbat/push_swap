@@ -1,80 +1,101 @@
 #include "prj.h"
 
-void	ft_min(int *t, t_stack *a)
+void	from_upa(int *t, t_list *head_a, t_list *head_b)
 {
-	t[FROMUPA] = 1;
-	while (a->index != t[MINA])
+	while (t[NBA] > 0)
 	{
-		t[NBRINSA]++;
-		a = a->suivant;
+		rotate(head_a);
+		ft_putstr("ra\n");
+		t[NBA]--;
 	}
+	while (t[NBB] > 0)
+	{	
+		reverse_rotate(head_b);
+		ft_putstr("rrb\n");
+		t[NBB]--;
+	}
+	push(head_a, head_b);
+	ft_putstr("pa\n");
 }
 
-void	ft_max(int *t, t_stack *a, int *v)
+void	from_upb(int *t, t_list *head_a, t_list *head_b)
 {
-	t[FROMUPA] = 1;
-	while (a->index != t[MAXA])
+	while (t[NBA] > 0)
 	{
-		t[NBRINSA]++;
-		a = a->suivant;
+		reverse_rotate(head_a);
+		ft_putstr("rra\n");
+		t[NBA]--;
 	}
-	if (t[NBRINSA] > (t[LENA] / 2))
-		*v = -1;
-	else
-		*v = 1;
+	while (t[NBB] > 0)
+	{
+		rotate(head_b);
+		ft_putstr("rb\n");
+		t[NBB]--;
+	}
+	push(head_a, head_b);
+	ft_putstr("pa\n");
 }
 
-void	ft_mid(int *t, t_stack *a, t_stack *b)
+void	from_upab(int *t, t_list *head_a, t_list *head_b)
 {
-	t[NBRINSA] = 1;
-	t[FROMUPA] = 1;
-	while (a->suivant && !(b->index < a->suivant->index && b->index > a->index))
+	while (t[NBA] > 0 && t[NBB] > 0)
 	{
-		t[NBRINSA]++;
-		a = a->suivant;
+		rotate(head_a);
+		rotate(head_b);
+		ft_putstr("rr\n");
+		t[NBA]--;
+		t[NBB]--;
 	}
-	if (a->suivant == NULL)
+	while (t[NBA] > 0)
 	{
-		t[NBRINSA] = 0;
+		rotate(head_a);
+		ft_putstr("ra\n");
+		t[NBA]--;
 	}
+	while (t[NBB] > 0)
+	{
+		rotate(head_b);
+		ft_putstr("rb\n");	
+		t[NBB]--;
+	}
+	push(head_a, head_b);
+	ft_putstr("pa\n");
 }
 
-void	find_element(int *t, t_list *head_a, t_stack *b)
+void	from_downab(int *t, t_list *head_a, t_list *head_b)
 {
-	int		v;
-	int		nb;
-	t_stack *a;
-
-	nb = 0;
-	while (b)
+	while (t[NBA] > 0 && t[NBB] > 0)
 	{
-		a = head_a->header;
-		t[FROMUPB] = 1;
-		v = 0;
-		t[NBRINSA] = 0;
-		if (b->index < t[MINA])
-			ft_min(t, a);
-		else if(b->index > t[MAXA])
-			ft_max(t,a,&v);
-		else
-			ft_mid(t, a, b);
-		number_of_instructions(t, v, nb);
-		b = b->suivant;
-		nb++;
+		reverse_rotate(head_a);
+		reverse_rotate(head_b);
+		ft_putstr("rrr\n");
+		t[NBA]--;
+		t[NBB]--;
 	}
+	while (t[NBA] > 0)
+	{
+		reverse_rotate(head_a);
+		ft_putstr("rra\n");
+		t[NBA]--;
+	}
+	while (t[NBB] > 0)
+	{
+		reverse_rotate(head_b);
+		ft_putstr("rrb\n");
+		t[NBB]--;
+	}
+	push(head_a, head_b);
+	ft_putstr("pa\n");
 }
 
-void	push_to_a(t_list *head_a, t_list *head_b)
+void	actions(int *t, t_list *head_a, t_list *head_b)
 {
-	t_stack	*b;
-	int		t[14];
-
-	while (head_b->header != NULL)
-	{
-		b = head_b->header;
-		initialiser(t);
-		size(head_a, head_b, t);
-		find_element(t, head_a, b);
-		actions(t, head_a, head_b);
-	}
+	if (t[UPA] == 1 && t[UPB] == 0)
+		from_upa(t, head_a, head_b);
+	else if (t[UPB] == 1 && t[UPA] == 0)
+		from_upb(t, head_a, head_b);
+	else if (t[UPA] == 1 && t[UPB] == 1)
+		from_upab(t, head_a, head_b);
+	else if (t[UPA] == 0 && t[UPB] == 0)
+		from_downab(t, head_a, head_b);
 }

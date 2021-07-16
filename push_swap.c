@@ -362,121 +362,122 @@ int	ft_check(t_list *head)
 // 	push_to_a(head_a, head_b);
 // 	free(t);
 // }
-void	from_upa(int *t, t_list *head_a, t_list *head_b)
-{
-	while (t[NBA] > 0)
-	{
-		rotate(head_a);
-		ft_putstr("ra\n");
-		t[NBA]--;
-	}
-	while (t[NBB] > 0)
-	{	
-		reverse_rotate(head_b);
-		ft_putstr("rrb\n");
-		t[NBB]--;
-	}
-	push(head_a, head_b);
-	ft_putstr("pa\n");
-}
 
-void	from_upb(int *t, t_list *head_a, t_list *head_b)
-{
-	while (t[NBA] > 0)
-	{
-		reverse_rotate(head_a);
-		ft_putstr("rra\n");
-		t[NBA]--;
-	}
-	while (t[NBB] > 0)
-	{
-		rotate(head_b);
-		ft_putstr("rb\n");
-		t[NBB]--;
-	}
-	push(head_a, head_b);
-	ft_putstr("pa\n");
-}
+// void	from_upa(int *t, t_list *head_a, t_list *head_b)
+// {
+// 	while (t[NBA] > 0)
+// 	{
+// 		rotate(head_a);
+// 		ft_putstr("ra\n");
+// 		t[NBA]--;
+// 	}
+// 	while (t[NBB] > 0)
+// 	{	
+// 		reverse_rotate(head_b);
+// 		ft_putstr("rrb\n");
+// 		t[NBB]--;
+// 	}
+// 	push(head_a, head_b);
+// 	ft_putstr("pa\n");
+// }
 
-void	from_upab(int *t, t_list *head_a, t_list *head_b)
-{
-	while (t[NBA] > 0 && t[NBB] > 0)
-	{
-		rotate(head_a);
-		rotate(head_b);
-		ft_putstr("rr\n");
-		t[NBA]--;
-		t[NBB]--;
-	}
-	while (t[NBA] > 0)
-	{
-		rotate(head_a);
-		ft_putstr("ra\n");
-		t[NBA]--;
-	}
-	while (t[NBB] > 0)
-	{
-		rotate(head_b);
-		ft_putstr("rb\n");	
-		t[NBB]--;
-	}
-	push(head_a, head_b);
-	ft_putstr("pa\n");
-}
+// void	from_upb(int *t, t_list *head_a, t_list *head_b)
+// {
+// 	while (t[NBA] > 0)
+// 	{
+// 		reverse_rotate(head_a);
+// 		ft_putstr("rra\n");
+// 		t[NBA]--;
+// 	}
+// 	while (t[NBB] > 0)
+// 	{
+// 		rotate(head_b);
+// 		ft_putstr("rb\n");
+// 		t[NBB]--;
+// 	}
+// 	push(head_a, head_b);
+// 	ft_putstr("pa\n");
+// }
 
-void	from_downab(int *t, t_list *head_a, t_list *head_b)
-{
-	while (t[NBA] > 0 && t[NBB] > 0)
-	{
-		reverse_rotate(head_a);
-		reverse_rotate(head_b);
-		ft_putstr("rrr\n");
-		t[NBA]--;
-		t[NBB]--;
-	}
-	while (t[NBA] > 0)
-	{
-		reverse_rotate(head_a);
-		ft_putstr("rra\n");
-		t[NBA]--;
-	}
-	while (t[NBB] > 0)
-	{
-		reverse_rotate(head_b);
-		ft_putstr("rrb\n");
-		t[NBB]--;
-	}
-	push(head_a, head_b);
-	ft_putstr("pa\n");
-}
+// void	from_upab(int *t, t_list *head_a, t_list *head_b)
+// {
+// 	while (t[NBA] > 0 && t[NBB] > 0)
+// 	{
+// 		rotate(head_a);
+// 		rotate(head_b);
+// 		ft_putstr("rr\n");
+// 		t[NBA]--;
+// 		t[NBB]--;
+// 	}
+// 	while (t[NBA] > 0)
+// 	{
+// 		rotate(head_a);
+// 		ft_putstr("ra\n");
+// 		t[NBA]--;
+// 	}
+// 	while (t[NBB] > 0)
+// 	{
+// 		rotate(head_b);
+// 		ft_putstr("rb\n");	
+// 		t[NBB]--;
+// 	}
+// 	push(head_a, head_b);
+// 	ft_putstr("pa\n");
+// }
 
-void	actions(int *t, t_list *head_a, t_list *head_b)
-{
-	if (t[UPA] == 1 && t[UPB] == 0)
-		from_upa(t, head_a, head_b);
-	else if (t[UPB] == 1 && t[UPA] == 0)
-		from_upb(t, head_a, head_b);
-	else if (t[UPA] == 1 && t[UPB] == 1)
-		from_upab(t, head_a, head_b);
-	else if (t[UPA] == 0 && t[UPB] == 0)
-		from_downab(t, head_a, head_b);
-}
+// void	from_downab(int *t, t_list *head_a, t_list *head_b)
+// {
+// 	while (t[NBA] > 0 && t[NBB] > 0)
+// 	{
+// 		reverse_rotate(head_a);
+// 		reverse_rotate(head_b);
+// 		ft_putstr("rrr\n");
+// 		t[NBA]--;
+// 		t[NBB]--;
+// 	}
+// 	while (t[NBA] > 0)
+// 	{
+// 		reverse_rotate(head_a);
+// 		ft_putstr("rra\n");
+// 		t[NBA]--;
+// 	}
+// 	while (t[NBB] > 0)
+// 	{
+// 		reverse_rotate(head_b);
+// 		ft_putstr("rrb\n");
+// 		t[NBB]--;
+// 	}
+// 	push(head_a, head_b);
+// 	ft_putstr("pa\n");
+// }
 
-void	initialiser(int *t)
-{
-	t[NBRINSA] = 0;
-	t[NBRINSB] = 0;
-	t[NBRINSAB] = 0;
-	t[LENA] = 0;
-	t[LENB] = 0;
-	t[NBA] = 0;
-	t[NBB] = 0;
-	t[NBAB] = maxim;
-	t[FROMUPA] = 1;
-	t[FROMUPB] = 1;
-	t[UPA] = 0;
-	t[UPB] = 0;
-}
+// void	actions(int *t, t_list *head_a, t_list *head_b)
+// {
+// 	if (t[UPA] == 1 && t[UPB] == 0)
+// 		from_upa(t, head_a, head_b);
+// 	else if (t[UPB] == 1 && t[UPA] == 0)
+// 		from_upb(t, head_a, head_b);
+// 	else if (t[UPA] == 1 && t[UPB] == 1)
+// 		from_upab(t, head_a, head_b);
+// 	else if (t[UPA] == 0 && t[UPB] == 0)
+// 		from_downab(t, head_a, head_b);
+// }
+
+// void	initialiser(int *t)
+// {
+// 	t[NBRINSA] = 0;
+// 	t[NBRINSB] = 0;
+// 	t[NBRINSAB] = 0;
+// 	t[LENA] = 0;
+// 	t[LENB] = 0;
+// 	t[NBA] = 0;
+// 	t[NBB] = 0;
+// 	t[NBAB] = maxim;
+// 	t[FROMUPA] = 1;
+// 	t[FROMUPB] = 1;
+// 	t[UPA] = 0;
+// 	t[UPB] = 0;
+// }
 
 // void	push_to_a(t_list *head_a, t_list *head_b)
 // {
@@ -515,49 +516,49 @@ void	initialiser(int *t)
 // 	}
 // }
 
-void	ft_rotate_a(t_list *head, int i, int fromdown)
-{
-	if (fromdown == 1)
-	{
-		while (i > 0)
-		{
-			reverse_rotate(head);
-			ft_putstr("rra\n");
-			i--;
-		}
-	}
-	else
-	{
-		while (i > 0)
-		{
-			rotate(head);
-			ft_putstr("ra\n");
-			i--;
-		}
-	}
-}
+// void	ft_rotate_a(t_list *head, int i, int fromdown)
+// {
+// 	if (fromdown == 1)
+// 	{
+// 		while (i > 0)
+// 		{
+// 			reverse_rotate(head);
+// 			ft_putstr("rra\n");
+// 			i--;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		while (i > 0)
+// 		{
+// 			rotate(head);
+// 			ft_putstr("ra\n");
+// 			i--;
+// 		}
+// 	}
+// }
 
-void	last_actions(t_list *head, int size_a)
-{
-	t_stack *a;
-	int		i;
-	int		fromdown;
+// void	last_actions(t_list *head, int size_a)
+// {
+// 	t_stack *a;
+// 	int		i;
+// 	int		fromdown;
 
-	a = head->header;
-	fromdown = 0;
-	i = 0;
-	while (a->index > 0)
-	{
-		i++;
-		a = a->suivant;
-	}
-	if (i > (size_a / 2))
-	{
-		fromdown = 1;
-		i = size_a - i;
-	}
-	ft_rotate_a(head, i, fromdown);
-}
+// 	a = head->header;
+// 	fromdown = 0;
+// 	i = 0;
+// 	while (a->index > 0)
+// 	{
+// 		i++;
+// 		a = a->suivant;
+// 	}
+// 	if (i > (size_a / 2))
+// 	{
+// 		fromdown = 1;
+// 		i = size_a - i;
+// 	}
+// 	ft_rotate_a(head, i, fromdown);
+// }
 
 // void	index_more_than_five_numbers(t_list *head_a, t_list *head_b, int size_a)
 // {
@@ -635,7 +636,7 @@ void	fill_a(t_list *header, int ac, char **av)
 		if (check_value(header, av[i - 1]))
 			ft_exit();
 		else
-			ft_remplir(header, atoi(av[i - 1]), -1, 0);
+			ft_remplir(header, atoi(av[i - 1]), -1);
 		i--;
 	}
 }

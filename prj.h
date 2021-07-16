@@ -25,17 +25,9 @@ typedef struct s_stack
 {
     int value;
     int index;
-    int bool;
     struct s_stack *suivant;
     struct s_stack *preced;
 }t_stack;
-
-// typedef struct s_instructions
-// {
-//     char ins;
-//     struct s_instructions *suivant;
-//     struct s_instructions *preced;
-// }t_instructions;
 
 typedef struct s_list
 {
@@ -48,7 +40,7 @@ void	push(t_list *dest, t_list *depart);
 void	rotate(t_list *tesla);
 void	reverse_rotate(t_list *tesla);
 void 	ft_depiler(t_list *head);
-void 	ft_remplir(t_list *head, int val, int index, int bool);
+void 	ft_remplir(t_list *head, int val, int index);
 int		is_digit(char *str);
 int		check_duplicate(t_list *head, char *str);
 int		check_overflow(char *str);
@@ -65,6 +57,8 @@ void	ft_free(t_list *head);
 
 void ft_depiler2(t_stack **a);
 //static void	ft_putstr(char *c);
+
+long long	ft_overflowhelper(char *str);
 
 void	ft_putstr(char *c);
 void	ft_exit();

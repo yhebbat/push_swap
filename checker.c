@@ -1,14 +1,5 @@
 #include "prj.h"
 
-// static void	ft_putstr(char *c)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (c[i])
-// 		write(1, &c[i++], 1);
-// }
-
 int	main(int ac, char **av)
 {
 	t_list	*header;
@@ -27,7 +18,7 @@ int	main(int ac, char **av)
 			if (check_value(header, av[ac - 1]))
 				ft_exit();
 			else
-				ft_remplir(header, atoi(av[ac - 1]), -1, 0);
+				ft_remplir(header, atoi(av[ac - 1]), -1);
 			ac--;
 		}
 		ft_get(header, header_b);

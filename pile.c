@@ -8,10 +8,8 @@ void ft_depiler(t_list *head)
 	if (head != NULL && head->header != NULL)
 	{
 		to_delete = head->header;
-		// printf("------\n");
 		if (!to_delete->suivant)
 		{
-			// printf("%p\n", to_delete->suivant);
 			free(to_delete);
 			head->header = NULL;
 			to_delete = NULL;
@@ -28,7 +26,7 @@ void ft_depiler(t_list *head)
 }
 
 
-void ft_remplir(t_list *head, int val, int index, int bool)
+void ft_remplir(t_list *head, int val, int index)
 {
 	t_stack	*a;
 	t_stack *to_add;
@@ -39,7 +37,6 @@ void ft_remplir(t_list *head, int val, int index, int bool)
 	if (head->header == NULL)
 	{
 		to_add->index = index;
-		to_add->bool = bool;
 		to_add->value = val;
 		to_add->suivant = NULL;
 		to_add->preced = NULL;
@@ -50,7 +47,6 @@ void ft_remplir(t_list *head, int val, int index, int bool)
 	{
 		a = head->header;
 		to_add->index = index;
-		to_add->bool = bool;
 		to_add->value = val;
 		to_add->suivant = a;
 		to_add->preced = NULL;

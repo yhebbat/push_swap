@@ -109,16 +109,3 @@ int		get_next_line(int fd, char **line)
 		return (remplir_fin(line, &str));
 	return (0);
 }
-/*
-   int	main()
-   {
-   char	*line;
-   int		fd;
-
-   fd = open("get_next_line.h", O_RDONLY);
-   line = NULL;
-   while (get_next_line(fd, &line))
-   printf("%s\n", line);
-//if (get_next_line(fd, &line))
-//	printf("%s\n", line);
-}*/

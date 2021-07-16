@@ -1,20 +1,5 @@
 #include "prj.h"
 
-void	ft_putstr(char *c)
-{
-	int	i;
-
-	i = 0;
-	while (c[i])
-		write(1, &c[i++], 1);
-}
-
-void	ft_exit()
-{
-	ft_putstr("Error\n");
-	exit(0);
-}
-
 void	ft_compare1(t_list *head_a, t_list *head_b, char *line)
 {
 	if (!strcmp(line, "sa"))
@@ -89,16 +74,4 @@ void	ft_get(t_list *header_a, t_list *header_b)
 	free(line);
 	if (res == -1)
 		ft_exit();
-}
-
-void	ft_free(t_list *head)
-{
-	if(head)
-	{
-		while (head->header != NULL)
-		{
-			ft_depiler(head);
-		}
-	free(head);
-	}
 }
