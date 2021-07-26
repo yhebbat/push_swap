@@ -6,7 +6,7 @@
 #    By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/16 16:02:13 by yhebbat           #+#    #+#              #
-#    Updated: 2021/07/16 18:51:54 by yhebbat          ###   ########.fr        #
+#    Updated: 2021/07/17 20:14:57 by yhebbat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ OBJECT_BONUS = $(SRC_BONUS:.c=.o)
 all : $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror  $(SRC) -o $(NAME)
+	@gcc -Wall -Wextra -Werror $(SRC) -o $(NAME)
 	@echo "✅✅✅"
 
 bonus:
-	@gcc -Wall -Wextra -Werror  -fsanitize=address -g $(SRC_BONUS) -o $(NAME_BONUS)
+	@gcc -Wall -Wextra -Werror $(SRC_BONUS) -o $(NAME_BONUS)
 	@echo "🎁🎁🎁"
 
 clean:

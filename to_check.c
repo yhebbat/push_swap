@@ -6,7 +6,7 @@
 /*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 16:04:11 by yhebbat           #+#    #+#             */
-/*   Updated: 2021/07/16 17:36:45 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/17 19:04:39 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	check_overflow(char *str)
 	long long	r;
 
 	r = ft_overflowhelper(str);
+	if (ft_strlen(str) > 15)
+		return (1);
 	if (r > 2147483647 || r < -2147483648)
 		return (1);
 	return (0);

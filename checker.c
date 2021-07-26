@@ -6,7 +6,7 @@
 /*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 16:02:17 by yhebbat           #+#    #+#             */
-/*   Updated: 2021/07/16 18:56:35 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/17 18:24:31 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 			ac--;
 		}
 		ft_get(header, header_b);
-		if (ft_checker(header))
+		if (ft_checker(header) && header_b->header == NULL)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");

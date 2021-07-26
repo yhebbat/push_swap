@@ -6,7 +6,7 @@
 /*   By: yhebbat <yhebbat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 16:03:47 by yhebbat           #+#    #+#             */
-/*   Updated: 2021/07/16 17:34:40 by yhebbat          ###   ########.fr       */
+/*   Updated: 2021/07/17 18:37:29 by yhebbat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_depiler(t_list *head)
 		{
 			free(to_delete);
 			head->header = NULL;
+			head->footer = NULL;
 			to_delete = NULL;
 		}
 		else
